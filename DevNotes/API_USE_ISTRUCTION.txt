@@ -1,0 +1,8 @@
+for more info, check 
+https://docs.openelectricity.org.au/api-reference/overview
+https://api.openelectricity.org.au/docs
+
+test key using:
+curl -X GET \
+    -H "Authorization: Bearer oe_3ZgRMZCTomF3BpPcK3TzLCzs" \
+    https://api.openelectricity.org.au/v4/me
