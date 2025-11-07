@@ -10,12 +10,12 @@ summary panels. Run with:
 Environment variables:
     MQTT_HOST / MQTT_PORT   - broker connection (default test.mosquitto.org:1883)
     MQTT_TOPIC              - topic filter (default nem/+/+/#)
-    FRONTEND_CACHE_DIR      - directory containing backend parquet caches
+    FRONTEND_CACHE_DIR      - directory containing backend CSV caches
     FRONTEND_REFRESH_SEC    - auto-refresh interval (default 5 seconds)
 
 Flow overview
 -------------
-1. Resolve ``FrontendSettings`` from the environment and seed state from the latest backend parquet cache.
+1. Resolve ``FrontendSettings`` from the environment and seed state from the latest backend CSV cache.
 2. Spawn an ``MQTTSubscriber`` thread that listens for live metric events and buffers them in a thread-safe queue.
 3. On each Streamlit rerun, drain the queue, merge new events into ``current``/``history`` tables, and update the session state.
 4. Render map, summary panels, and recent events table; optionally auto-trigger a rerun after ``refresh_interval_s`` seconds.
@@ -29,11 +29,10 @@ import os
 import threading
 import time
 from dataclasses import dataclass, field
-from datetime import date, datetime, timezone
-import re
+from datetime import datetime, timezone
 from pathlib import Path
 from queue import Empty, Queue
-from typing import Any, Dict, Iterable, List, Optional, Tuple, Union
+from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import pandas as pd
 import pydeck as pdk
@@ -92,20 +91,22 @@ def _make_mqtt_client() -> mqtt.Client:
 
 
 def _latest_cache_path(cache_dir: Path) -> Optional[Path]:
-    """Return the newest parquet file inside the configured cache directory."""
+    """Return the newest CSV cache file inside the configured cache directory."""
     if not cache_dir.exists():
         return None
-    parquet_files = sorted(cache_dir.glob("*.parquet"), key=lambda p: p.stat().st_mtime, reverse=True)
-    return parquet_files[0] if parquet_files else None
+    metrics_files = list(cache_dir.glob("*_metrics.csv"))
+    csv_files = metrics_files if metrics_files else list(cache_dir.glob("*.csv"))
+    csv_files = sorted(csv_files, key=lambda p: p.stat().st_mtime, reverse=True)
+    return csv_files[0] if csv_files else None
 
 
 def _load_seed_data(cache_dir: Path) -> Optional[pd.DataFrame]:
-    """Load the most recent backend cache to bootstrap dashboard state."""
+    """Load the most recent backend CSV cache to bootstrap dashboard state."""
     cache_path = _latest_cache_path(cache_dir)
     if not cache_path:
         return None
-    seed = pd.read_parquet(cache_path)
-    numeric_cols = ["power_mw", "co2_t", "price", "demand"]
+    seed = pd.read_csv(cache_path)
+    numeric_cols = ["power_mw", "co2_t", "price", "demand", "lat", "lon"]
     for column in numeric_cols:
         if column in seed:
             seed[column] = pd.to_numeric(seed[column], errors="coerce")
@@ -148,59 +149,6 @@ def _parse_timestamp(value: Any, default: Optional[datetime] = None) -> datetime
     if dt.tzinfo is not None:
         dt = dt.astimezone(timezone.utc).replace(tzinfo=None)
     return dt
-
-
-def _sanitize_identifier(raw: str, prefix: str) -> str:
-    """Convert free-form text into a compact identifier prefixed for uniqueness."""
-    slug = re.sub(r"[^A-Za-z0-9]+", "_", raw.upper()).strip("_")
-    slug = re.sub(r"_+", "_", slug)
-    return f"{prefix}{slug}"[:80]
-
-
-def _load_assignment1_metadata(base_dir: Path) -> Optional[pd.DataFrame]:
-    """Load optional Assignment 1 CSVs to broaden the facility metadata table."""
-    files: List[Tuple[str, str, Optional[str], str, str]] = [
-        ("power-stations-and-projects-accredited-geocoded.csv", "accredited", "Accreditation code", "Power station name", "Fuel Source (s)"),
-        ("power-stations-and-projects-committed-geocoded.csv", "committed", None, "Project Name", "Fuel Source"),
-        ("power-stations-and-projects-probable-geocoded.csv", "probable", None, "Project Name", "Fuel Source"),
-    ]
-    records: List[Dict[str, Any]] = []
-    for filename, status, code_col, name_col, fuel_col in files:
-        csv_path = base_dir / filename
-        if not csv_path.exists():
-            continue
-        df = pd.read_csv(csv_path)
-        if df.empty:
-            continue
-        for _, row in df.iterrows():
-            name = str(row.get(name_col, "")).strip()
-            if not name:
-                continue
-            raw_id = row.get(code_col) if code_col else None
-            facility_id = _sanitize_identifier(str(raw_id) if raw_id else name, prefix=f"{status[:3].upper()}_")
-            try:
-                lat = float(row.get("latitude", float("nan")))
-                lon = float(row.get("longitude", float("nan")))
-            except (TypeError, ValueError):
-                continue
-            if not (pd.notna(lat) and pd.notna(lon)):
-                continue
-            record = {
-                "facility_id": facility_id,
-                "name": name,
-                "fuel": str(row.get(fuel_col, "")).strip() or "Unknown",
-                "state": str(row.get("State") or row.get("State ", "")).strip() or "UNKNOWN",
-                "lat": lat,
-                "lon": lon,
-                "capacity_mw": _maybe_float(row.get("Installed capacity (MW)") or row.get("MW Capacity")),
-                "status": status,
-            }
-            records.append(record)
-    if not records:
-        return None
-    meta_df = pd.DataFrame.from_records(records)
-    meta_df = meta_df.drop_duplicates("facility_id").set_index("facility_id")
-    return meta_df
 
 
 def _normalize_event(payload: Dict[str, object]) -> Optional[Dict[str, object]]:
@@ -501,29 +449,13 @@ def run_app() -> None:
     seed_df = _load_seed_data(settings.cache_dir)
     if seed_df is None or seed_df.empty:
         st.error(
-            "No cached data found. Run `a2_backend.py --mode build` first so the frontend "
+            "No cached data found. Run `python a2_backend.py --mode build` first so the frontend "
             "can bootstrap facility metadata."
         )
         return
 
     if "metadata" not in st.session_state:
         metadata, current_df = _initial_state(seed_df)
-        assignment_meta = _load_assignment1_metadata(Path("."))
-        if assignment_meta is not None:
-            metadata = pd.concat([metadata, assignment_meta], axis=0)
-            extra_rows = assignment_meta.reset_index()
-            extra_rows["power_mw"] = float("nan")
-            extra_rows["co2_t"] = float("nan")
-            extra_rows["price"] = float("nan")
-            extra_rows["demand"] = float("nan")
-            extra_rows["ts_event"] = pd.NaT
-            extra_rows["ts_ingest"] = pd.NaT
-            extra_rows = extra_rows[current_df.columns]
-            current_df = (
-                pd.concat([current_df, extra_rows], ignore_index=True)
-                .drop_duplicates("facility_id", keep="first")
-                .reset_index(drop=True)
-            )
         st.session_state.metadata = metadata
         st.session_state.current_df = current_df
         st.session_state.history_df = pd.DataFrame(columns=current_df.columns)
