@@ -308,7 +308,12 @@ def update_manifest(cache_path: Path, manifest_path: Path, window_label: str) ->
         "bytes": cache_path.stat().st_size if cache_path.exists() else 0,
         "retrieved_at": datetime.utcnow().isoformat(),
     }
-    df = pd.read_csv(manifest_path) if manifest_path.exists() else pd.DataFrame(columns=entry.keys())
+    if manifest_path.exists():
+        df = pd.read_csv(manifest_path)
+        if "window" not in df.columns:
+            df = pd.DataFrame(columns=entry.keys())
+    else:
+        df = pd.DataFrame(columns=entry.keys())
     df = df[df["window"] != window_label]
     df = pd.concat([df, pd.DataFrame([entry])], ignore_index=True)
     df.to_csv(manifest_path, index=False)

@@ -1,0 +1,109 @@
+A2 BACKEND & FRONTEND TO-DO LIST (TXT)
+
+=============================
+[ ] You can finish once the code can be run without error and all requirements have been satisfied.
+
+
+=============================
+Solve the Environment
+
+[ ] Check the current environment, and make assure it can finish all the following task.
+[ ] If the environment isn't ready, try to install new packages or open a virtual environment.
+[ ] After all task is done, write a requirement.txt for backend task.
+[ ] If the environment can't be assured, report an error.
+
+=============================
+Early check the readiness
+
+[ ] The API key is in the environment as OE_API_KEY.
+[ ] Check all the information are provided or can be accessed.
+[ ] If not, return an message asking for information.
+[ ] Once readiness is check, start coding.
+
+
+=============================
+BACKEND (Tasks 1–3) — a2_backend.py
+
+[ ] Create files: a2_backend.py and a2_frontend.py
+[ ] Create folders at runtime: data/cache/ and data/tmp/
+[ ] Create requirements.txt (pandas, requests, paho-mqtt; optional: pyarrow, pandera)
+
+-- Settings & CLI
+[ ] Implement Settings dataclass reading env vars (A2_START, A2_END, MQTT_HOST, etc.)
+[ ] Add main() with modes: build | stream | loop
+[ ] Ensure no side effects on import
+
+-- Message Contract
+[ ] Define FacilityPoint(dataclass): facility_id, name, fuel, state, lat, lon
+[ ] Define MetricEvent(dataclass): ts_event, ts_ingest, power_mw, co2_t, price, demand
+[ ] Implement MetricEvent.to_json()
+[ ] Implement topic_for(facility) -> "nem/{state}/{fuel}/{facility_id}"
+
+-- Facility Metadata (reuse from A1)
+[ ] Implement discover_facilities(network) -> columns: facility_id,name,fuel,state,lat,lon
+[ ] Validate non-null ids and lat/lon bounds
+
+-- API Client (rate-limit safe)
+[ ] Implement fetch_timeseries(facility_id, series, start, end, api_key) -> tidy df with columns [facility_id, series, ts, value]
+[ ] Add pacing sleep between requests and basic retry with backoff
+[ ] Track and log request budget; stop before 500/day
+
+-- Cleaning & Integration (pure transforms)
+[ ] Implement reconcile_units(df) -> aggregate to facility+series+5min
+[ ] Implement pivot_metrics(df) -> wide columns: power_mw, co2_t (optional price, demand)
+[ ] Implement attach_facility_meta(wide, meta)
+[ ] Add sanity checks: sorted timestamps; non-negative power/emissions
+
+-- Caching & Manifest
+[ ] Implement write_parquet(df, path) and read_parquet(path)
+[ ] Maintain manifest.csv with retrieved_at, url, bytes, md5
+[ ] Skip writes if md5 unchanged (idempotency)
+
+-- Publisher
+[ ] Implement publish_events(events, topic_fn, host, port, delay_s) using paho-mqtt
+[ ] Enforce >= 0.1 s delay between publishes
+[ ] Publish in event-time order and include ts_ingest = UTC now
+
+-- Orchestration
+[ ] Implement build_cache(start, end): fetch -> clean -> integrate -> write cache; return path
+[ ] Implement stream_latest(cache_path=None): read cache -> emit MetricEvent -> publish
+[ ] Implement loop mode: every 60 s run build_cache then stream_latest
+
+-- Observability
+[ ] Structured logs: phase, facility_id, series, rows, duration
+[ ] --dry-run flag (fetch + validate; no write/publish)
+
+-- Security & Ethics
+[ ] Read API key from env only
+[ ] Handle HTTP errors and 429s gracefully (backoff)
+
+=============================
+FRONTEND HANDOFF (Task 4) — a2_frontend.py
+
+[ ] Minimal MQTT subscriber: connect, subscribe("nem/+/+/#"), parse JSON, print
+[ ] Document topic pattern and event JSON fields for teammate
+
+=============================
+DEV QUALITY (avoid “not reusable”)
+
+[ ] Docstrings on all public functions (inputs, outputs, invariants)
+[ ] Keep transforms pure (no I/O or prints)
+[ ] Smoke test: python a2_backend.py --mode build; then --mode stream
+[ ] Small local tests for reconcile_units and pivot_metrics (not necessarily submitted)
+
+=============================
+SUBMISSION PREP
+
+[ ] Only need to complete backend.py (Tasks 1–3) here.
+[ ] Only two code files to submit: a2_backend.py (Tasks 1–3) and a2_frontend.py (Task 4)
+[ ] requirements.txt minimal and accurate
+[ ] Report/README snippet: how to run, env vars, cache path, row counts, timespan
+[ ] Capture evidence (log lines or screenshots): successful fetch, cache write, MQTT publish
+
+=============================
+DEFINITION OF DONE (self-check)
+
+[ ] Importing a2_backend does nothing; all work via main() or explicit calls
+[ ] Each step (discover/fetch/clean/publish) callable independently
+[ ] Changing time window requires only flags/env, not code edits
+[ ] Frontend can subscribe and render markers using only the documented schema and topic pattern
