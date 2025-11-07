@@ -12,6 +12,13 @@ Environment variables:
     MQTT_TOPIC              - topic filter (default nem/+/+/#)
     FRONTEND_CACHE_DIR      - directory containing backend parquet caches
     FRONTEND_REFRESH_SEC    - auto-refresh interval (default 5 seconds)
+
+Flow overview
+-------------
+1. Resolve ``FrontendSettings`` from the environment and seed state from the latest backend parquet cache.
+2. Spawn an ``MQTTSubscriber`` thread that listens for live metric events and buffers them in a thread-safe queue.
+3. On each Streamlit rerun, drain the queue, merge new events into ``current``/``history`` tables, and update the session state.
+4. Render map, summary panels, and recent events table; optionally auto-trigger a rerun after ``refresh_interval_s`` seconds.
 """
 
 from __future__ import annotations
@@ -62,6 +69,7 @@ class FrontendSettings:
 
     @staticmethod
     def from_env() -> "FrontendSettings":
+        """Construct settings using environment overrides when present."""
         env = os.environ
         return FrontendSettings(
             mqtt_host=env.get("MQTT_HOST", "test.mosquitto.org"),
@@ -84,6 +92,7 @@ def _make_mqtt_client() -> mqtt.Client:
 
 
 def _latest_cache_path(cache_dir: Path) -> Optional[Path]:
+    """Return the newest parquet file inside the configured cache directory."""
     if not cache_dir.exists():
         return None
     parquet_files = sorted(cache_dir.glob("*.parquet"), key=lambda p: p.stat().st_mtime, reverse=True)
@@ -91,6 +100,7 @@ def _latest_cache_path(cache_dir: Path) -> Optional[Path]:
 
 
 def _load_seed_data(cache_dir: Path) -> Optional[pd.DataFrame]:
+    """Load the most recent backend cache to bootstrap dashboard state."""
     cache_path = _latest_cache_path(cache_dir)
     if not cache_path:
         return None
@@ -108,6 +118,7 @@ def _load_seed_data(cache_dir: Path) -> Optional[pd.DataFrame]:
 
 
 def _maybe_float(value: Any) -> Optional[float]:
+    """Best-effort conversion to float that tolerates pandas NA markers."""
     if value is None:
         return None
     try:
@@ -140,12 +151,14 @@ def _parse_timestamp(value: Any, default: Optional[datetime] = None) -> datetime
 
 
 def _sanitize_identifier(raw: str, prefix: str) -> str:
+    """Convert free-form text into a compact identifier prefixed for uniqueness."""
     slug = re.sub(r"[^A-Za-z0-9]+", "_", raw.upper()).strip("_")
     slug = re.sub(r"_+", "_", slug)
     return f"{prefix}{slug}"[:80]
 
 
 def _load_assignment1_metadata(base_dir: Path) -> Optional[pd.DataFrame]:
+    """Load optional Assignment 1 CSVs to broaden the facility metadata table."""
     files: List[Tuple[str, str, Optional[str], str, str]] = [
         ("power-stations-and-projects-accredited-geocoded.csv", "accredited", "Accreditation code", "Power station name", "Fuel Source (s)"),
         ("power-stations-and-projects-committed-geocoded.csv", "committed", None, "Project Name", "Fuel Source"),
@@ -191,6 +204,7 @@ def _load_assignment1_metadata(base_dir: Path) -> Optional[pd.DataFrame]:
 
 
 def _normalize_event(payload: Dict[str, object]) -> Optional[Dict[str, object]]:
+    """Validate raw MQTT payloads and coerce fields into consistent Python types."""
     required = {"facility_id", "ts_event"}
     if not required.issubset(payload):
         missing = required.difference(payload)
@@ -220,6 +234,7 @@ class MQTTSubscriber:
     """Background MQTT subscriber pushing decoded events into a queue."""
 
     def __init__(self, settings: FrontendSettings) -> None:
+        """Configure the MQTT client and shared state using the provided settings."""
         self.settings = settings
         self.logger = logging.getLogger("a2.frontend.mqtt")
         self.client = _make_mqtt_client()
@@ -234,6 +249,7 @@ class MQTTSubscriber:
         self.client.on_disconnect = self._on_disconnect
 
     def start(self) -> None:
+        """Establish a connection to the broker and start the background network loop."""
         with self._lock:
             if self._started:
                 return
@@ -252,6 +268,7 @@ class MQTTSubscriber:
             self._started = True
 
     def stop(self) -> None:
+        """Stop the network loop and drop the broker connection."""
         with self._lock:
             if not self._started:
                 return
@@ -260,6 +277,7 @@ class MQTTSubscriber:
             self._started = False
 
     def drain(self) -> Iterable[Dict[str, object]]:
+        """Yield all queued events without blocking."""
         while True:
             try:
                 yield self.queue.get_nowait()
@@ -268,6 +286,7 @@ class MQTTSubscriber:
 
     # MQTT callbacks -----------------------------------------------------
     def _on_connect(self, client: mqtt.Client, userdata, flags, reason_code, properties=None) -> None:  # type: ignore[override]
+        """Subscribe to the configured topic once the broker acknowledges the connection."""
         code = getattr(reason_code, "value", reason_code)
         if code == 0:
             self.logger.info("MQTT connected; subscribing to %s", self.settings.mqtt_topic)
@@ -277,11 +296,13 @@ class MQTTSubscriber:
             self.logger.error("MQTT connection failed with rc=%s", code)
 
     def _on_disconnect(self, client: mqtt.Client, userdata, reason_code, properties=None) -> None:  # type: ignore[override]
+        """Handle broker disconnects by logging and clearing the ready flag."""
         code = getattr(reason_code, "value", reason_code)
         self.logger.warning("MQTT disconnected rc=%s", code)
         self.connected.clear()
 
     def _on_message(self, client: mqtt.Client, userdata, message) -> None:
+        """Decode JSON payloads, normalise them, and push onto the shared queue."""
         try:
             payload = json.loads(message.payload.decode("utf-8"))
         except json.JSONDecodeError:
@@ -294,6 +315,7 @@ class MQTTSubscriber:
 
 
 def _initial_state(seed_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """Split the seed cache into facility metadata and the latest per-facility metrics."""
     columns = [
         "facility_id",
         "name",
@@ -331,12 +353,14 @@ def _initial_state(seed_df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def _color_for_fuel(fuel: str, palette: Dict[str, List[int]]) -> List[int]:
+    """Pick a RGB color for the supplied fuel type, falling back to 'other'."""
     if not isinstance(fuel, str):
         return palette["other"]
     return palette.get(fuel.lower(), palette["other"])
 
 
 def _prepare_map_source(current_df: pd.DataFrame, palette: Dict[str, List[int]]) -> pd.DataFrame:
+    """Derive map-ready columns including colors, radii, and joined metadata."""
     if current_df.empty:
         return current_df
     working = current_df.copy()
@@ -364,6 +388,7 @@ def _apply_events(
     history_df: pd.DataFrame,
     history_limit: int,
 ) -> None:
+    """Merge incoming events into the `current` snapshot and append to history with bounds."""
     columns = list(current_df.columns)
     for event in events:
         facility_id = str(event["facility_id"])
@@ -399,6 +424,7 @@ def _apply_events(
 
 
 def _render_summary(current_df: pd.DataFrame) -> None:
+    """Render headline metrics summarising total power and emissions."""
     total_power = current_df["power_mw"].fillna(0.0).sum()
     total_co2 = current_df["co2_t"].fillna(0.0).sum()
     st.metric("Total Power (MW)", f"{total_power:,.2f}")
@@ -406,6 +432,7 @@ def _render_summary(current_df: pd.DataFrame) -> None:
 
 
 def _render_map(map_df: pd.DataFrame) -> None:
+    """Display the facilities on a PyDeck scatter map with size and colour cues."""
     if map_df.empty:
         st.info("No facility data available yet. Waiting for events...")
         return
@@ -436,6 +463,7 @@ def _render_map(map_df: pd.DataFrame) -> None:
 
 
 def _sidebar_filters(current_df: pd.DataFrame) -> pd.DataFrame:
+    """Render sidebar controls and return the filtered facility dataframe."""
     sidebar = st.sidebar
     sidebar.header("Filters")
     fuels = sorted([fuel for fuel in current_df["fuel"].dropna().unique()])
@@ -449,6 +477,16 @@ def _sidebar_filters(current_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def run_app() -> None:
+    """
+    Launch the Streamlit UI, hydrate state from cached data, and stream live updates.
+
+    Steps:
+        1. Load ``FrontendSettings`` (allowing overrides via env vars) and configure Streamlit.
+        2. Prime session state from the latest backend cache so facility metadata is available immediately.
+        3. Start the background ``MQTTSubscriber`` thread to pull metric events into an in-memory queue.
+        4. Merge queued events into the current/history tables, render the map + summary widgets, and schedule reruns
+           while auto-refresh is enabled.
+    """
     settings = FrontendSettings.from_env()
     st.set_page_config(page_title="COMP5339 A2 Dashboard", layout="wide")
 

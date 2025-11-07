@@ -1,0 +1,509 @@
+facility_id,name,fuel,state,lat,lon
+0BCWF,Boulder Creek,wind,QL,-23.669964,150.260813
+0BSSF,Broadsound,battery,QL,-22.810001,149.36302
+0BUNDSF,Bundaberg,solar_utility,QL,-24.943515,152.020698
+0BUNGAMA,Bungama,battery,SA,-33.191223,138.08733
+0CALBESS1,Calala 1,battery,NS,-31.141287,150.963101
+0CALBESS2,Calala 2,battery,NS,-31.141287,150.963101
+0ERB2,Eraring 2,battery,NS,-33.066837,151.515026
+0FULHAMSF,Fulham,battery,VI,-38.121256,146.973124
+0GLENELLEN,Glenellen,solar_utility,NS,-35.929882,146.909107
+0GNARWARREBESS,Gnarwarre,battery,VI,-38.148311,144.139484
+0GOORESF,Goorambat,solar_utility,VI,-36.427352,145.918853
+0GPWFWST,Golden Plains West,wind,VI,-37.90844,143.664887
+0GRIVSF,Goulburn River,battery,NS,-32.282141,150.102488
+0GUNSYNDSF,Gunsynd,solar_utility,QL,-28.408388,150.343437
+0HORSHAMSF,Horsham,battery,VI,-36.71577,142.25956
+0KIDSTON,Kidston,hydro,QL,-18.865892,144.15955
+0LANCSF,Lancaster,solar_utility,VI,-36.290467,145.141535
+0LCNBESS,Limestone Coast North,battery,SA,-37.733181,140.840805
+0LIDDELLBESS,Liddell,battery,NS,-32.37564,150.978578
+0LOCKHART,Lockhart,battery,NS,-35.217506,146.70322
+0LOTUSCRKWF,Lotus Creek,wind,QL,-22.366535,149.27332
+0MARYVALE,Maryvale,battery,NS,-32.465112,148.913306
+0MORNBESS,Mornington,battery,VI,-38.268707,145.204823
+0MREH,Melbourne A1,battery,VI,-37.661274,144.726302
+0MREHA2,Melbourne A2,battery,VI,-37.663934,144.726927
+0MRTLKBESS,Mortlake,battery,VI,-38.06698,142.669466
+0ORANABESS,Orana,battery,NS,-32.530421,148.962923
+0PLWF,Port Latta,wind,TA,-40.871168,145.357293
+0RIVERINASF,Riverina,solar_utility,NS,-34.309852,146.105225
+0SNOWY20,Snowy 2.0,hydro,NS,-35.745207,148.653852
+0STANBESS,Stanwell,battery,QL,-23.513568,150.31811
+0SUMMFBESS,Summerfield,battery,SA,-34.9538,139.21502
+0SUPERNODE2,Supernode 2,battery,QL,-27.449227,153.112538
+0SWANBBESS,Swanbank,battery,QL,-27.65619,152.817139
+0TARONGBESS,Tarong,battery,QL,-26.780051,151.912068
+0TERANGBESS,Terang,battery,VI,-38.231839,142.933262
+0TILBSF,Tilbuster,solar_utility,NS,-30.382963,151.658909
+0TOMAGOBESS,Tomago,battery,NS,-32.814277,151.706523
+0UUNGULAWF,Uungula,wind,NS,-32.551969,149.161325
+0WAMBOWF,Wambo,wind,QL,-26.603045,151.246876
+0WDBESS,Williamsdale,battery,NS,-35.57458,149.131993
+0WELLINGTONBESS,Bulabul,battery,NS,-32.530355,148.969343
+0WOORBESS,Wooreen,battery,VI,-38.27376,146.427729
+ADP,Adelaide Desalination,battery,SA,-35.096948,138.484061
+AGLHAL,Hallett,gas_ocgt,SA,-33.34931,138.752633
+AGLNOW1,West Nowra,bioenergy_biogas,NS,-34.882318,150.551075
+AGLSITA,Kemps Creek,bioenergy_biogas,NS,-33.874591,150.761858
+AGLSOM,Somerton,gas_ocgt,VI,-37.630949,144.953098
+ALDGASF,Aldoga,solar_utility,QL,-23.839544,151.0849
+AMCORGR,Amcor Glass,distillate,SA,-34.882663,138.577975
+ANGASTON,Angaston,distillate,SA,-34.503948,139.024296
+APPIN,Appin,gas_wcmg,NS,-34.210868,150.792711
+APS,Anglesea,coal_brown,VI,-38.389031,144.180589
+ARWF,Ararat,wind,VI,-37.263393,143.082116
+AVLSF,Avonlie,solar_utility,NS,-34.919115,146.60954
+AWABAREF,Awaba,bioenergy_biogas,NS,-33.023339,151.551228
+B2PS,Braemar 2,gas_ocgt,QL,-27.109873,150.907653
+BAKING,Baking Board,solar_utility,QL,-26.721166,150.55417
+BALBESS,Ballarat,battery,VI,-37.567452,143.852741
+BANGOWF,Bango,wind,NS,-34.767208,148.921499
+BANKSPT,Bankstown Sports Club,distillate,NS,-33.919998,151.033742
+BANNSP,Bannerton,solar_utility,VI,-34.67263,142.750362
+BAPS,Banimboola,hydro,VI,-36.534524,147.459788
+BARCALDN,Barcaldine,gas_ccgt,QL,-23.552171,145.314851
+BARCSF,Barcaldine,solar_utility,QL,-23.547333,145.318972
+BARKIPS,Barker Inlet,gas_recip,SA,-34.804,138.524
+BARRON,Barron Gorge,hydro,QL,-16.85077,145.647049
+BASTYAN,Bastyan,hydro,TA,-41.736231,145.531589
+BAYSW,Bayswater,coal_black,NS,-32.393502,150.953963
+BBASEHOS,Ballarat Hospital,gas_recip,VI,-37.558774,143.847247
+BBATTERY,Bouldercombe,battery,QL,-23.563443,150.459658
+BBDISEL1,Bell Bay,distillate,TA,-41.127009,146.874083
+BBP31,Bell Bay Three,gas_ocgt,TA,-41.139324,146.905522
+BDONGHYD,Burrendong,hydro,NS,-32.664647,149.108016
+BELLBAY,Bell Bay,gas_steam,TA,-41.141944,146.9025
+BERWICK,Berwick,bioenergy_biogas,VI,-37.940819,145.236257
+BERYLSF,Beryl,solar_utility,NS,-32.347501,149.460738
+BHB,Broken Hill Battery,battery,NS,-31.9863,141.4204
+BHILLGT,Broken Hill,distillate,NS,-31.986313,141.42062
+BHWF,Bald Hills,wind,VI,-38.758189,145.956062
+BIALAWF,Biala,wind,NS,-34.587836,149.369848
+BLAYNEY,Blayney,wind,NS,-33.621944,149.198333
+BLUEGSF,Blue Grass,solar_utility,QL,-26.691708,150.500037
+BLUFF,The Bluff,wind,SA,-33.367741,138.79379
+BLULAKE,Blue Lake Milling,distillate,SA,-36.316597,140.757571
+BLYTHB,Blyth,battery,SA,-33.848475,138.403204
+BNGSF1,Bungala One,solar_utility,SA,-32.423316,137.841798
+BNGSF2,Bungala Two,solar_utility,SA,-32.406993,137.840933
+BOCOROCK,Boco Rock,wind,NS,-36.574527,149.124863
+BODWF,Bodangora,wind,NS,-32.407128,149.04133
+BOLIVAR,Bolivar,battery,SA,-34.495482,138.387641
+BOLIVPS,Bolivar,gas_ocgt,SA,-34.7772,138.5826
+BOMENSF,Bomen,solar_utility,NS,-35.0486,147.4439
+BPLANDF,Browns Plains,bioenergy_biogas,QL,-27.674584,153.068499
+BRAEMARA,Braemar,gas_ocgt,QL,-27.111669,150.907647
+BRNDBES,Brendale,battery,QL,-27.329333,152.974384
+BROADMDW,Broadmeadows,bioenergy_biogas,VI,-37.685081,144.966114
+BROKENH,Broken Hill,solar_utility,NS,-31.988905,141.391547
+BROOKLYN,Brooklyn,bioenergy_biogas,VI,-37.818597,144.828492
+BROWNMT,Brown Mountain,hydro,NS,-36.594993,149.473997
+BRYB1WF1,Berrybank,wind,VI,-37.980741,143.472217
+BULGANA,Bulgana Green Power Hub,battery,VI,-37.039507,142.982799
+BURRIN,Burrinjuck,hydro,NS,-35.003532,148.579891
+BUTLERSG,Butlers Gorge,hydro,TA,-42.267107,146.262127
+BWTR1,Broadwater,bioenergy_biomass,NS,-29.016483,153.445756
+CALLIDEC1,Callide C,coal_black,QL,-24.347222,150.608611
+CALL_A,Callide A,coal_black,QL,-24.333169,150.626322
+CALL_B,Callide B,coal_black,QL,-24.333169,150.626322
+CANUNDA1,Canunda,wind,SA,-37.698303,140.383633
+CAPBES,Capital,battery,NS,-35.339434,149.216065
+CAPTL_WF,Capital,wind,NS,-35.123534,149.500249
+CATHROCK,Cathedral Rocks,wind,SA,-34.848741,135.592649
+CBWF,Coonoer Bridge,wind,VI,-36.472722,143.322039
+CBWWBA,Christies Beach,battery,SA,-35.125958,138.47135
+CESF,Capital East,solar_utility,NS,-35.180684,149.546482
+CETHANA,Cethana,hydro,TA,-41.479852,146.134472
+CHALLWF,Challicum Hills,wind,VI,-37.395466,143.10459
+CHBESS,Chinchilla,battery,QL,-26.918551,150.745399
+CHILDSF,Childers,solar_utility,QL,-25.295027,152.403674
+CHPSTWF,Chepstowe,wind,VI,-37.596503,143.499582
+CHYTWF,Cherry Tree,wind,VI,-37.1018,145.2656
+CLARESF,Clare,solar_utility,QL,-19.83977,147.21055
+CLAYTON,Clayton,bioenergy_biogas,VI,-37.950618,145.119681
+CLEMGPWF,Clements Gap,battery,SA,-33.489773,138.111695
+CLERMSF,Clermont,solar_utility,QL,-22.839406,147.546031
+CLOVER,Clover,hydro,VI,-36.78515,147.219517
+CLRKCWF,Clarke Creek,wind,QL,-22.850446,149.453252
+CLUNY,Cluny,hydro,TA,-42.506229,146.681123
+CODRGTON,Codrington,wind,VI,-38.282875,141.95496
+COHUNSF1,Cohuna,solar_utility,VI,-35.880317,144.221531
+COLEASF,Coleambally,solar_utility,NS,-34.759494,145.92984
+COLNSV,Collinsville,coal_black,QL,-20.543333,147.806944
+COLONGRA,Colongra,gas_ocgt,NS,-33.208781,151.54354
+COLUMSF,Columboola,solar_utility,QL,-26.636088,150.28221
+COLWF01,Collector,wind,NS,-34.823879,149.396795
+CONDONG1,Condong,bioenergy_biomass,NS,-28.314766,153.433808
+COOPGWF,Coopers Gap,wind,QL,-26.717004,151.449177
+COPTNHYD,Copeton,hydro,NS,-29.907544,150.930235
+CORIO,Corio,bioenergy_biogas,VI,-38.059048,144.404905
+CPSA,Condamine A,gas_ccgt,QL,-26.666673,150.268581
+CROOKWEL,Crookwell,wind,NS,-34.5165,149.54248
+CROOKWF2,Crookwell 2,wind,NS,-34.547676,149.589254
+CROOKWF3,Crookwell 3,wind,NS,-34.484645,149.54447
+CROWLWF,Crowlands,wind,VI,-36.97615,143.097998
+CRURWF1,Crudine Ridge,wind,NS,-32.864748,149.81297
+CRWASF1,Corowa,solar_utility,NS,-35.98629,146.361456
+CSPVPS,Collinsville,solar_utility,QL,-20.55714,147.820552
+CTHLWF,Cattle Hill,wind,TA,-42.154845,146.694693
+CULCSF,Culcairn,solar_utility,NS,-35.709592,146.981761
+CULLERIN,Cullerin Range,wind,NS,-34.750995,149.381027
+DAANDINE,Daandine,gas_recip,QL,-27.086294,150.942528
+DALNTH,Dalrymple North,battery,SA,-34.888446,137.758114
+DARLSF,Darlington Point,solar_utility,NS,-34.644808,146.035756
+DARTM,Dartmouth,hydro,VI,-36.55529,147.519872
+DAYDSF,Daydream,solar_utility,QL,-20.512804,147.691968
+DDPS1,Darling Downs,gas_ccgt,QL,-27.116851,150.895391
+DDSF,Darling Downs,solar_utility,QL,-27.112,150.8819
+DEIBDL,Bairnsdale,gas_ocgt,VI,-37.842231,147.563725
+DEVILS_G,Devils Gate,hydro,TA,-41.349925,146.262709
+DIAPURWF,Diapur 2,wind,VI,-36.339953,141.447361
+DPNTB,Darlington Point,battery,NS,-34.646668,146.034982
+DRYCGT,Dry Creek,gas_ocgt,SA,-34.847293,138.582297
+DULAWF,Dulacca,wind,QL,-26.637485,149.870186
+DUNDWF,Dundonnell,wind,VI,-37.863894,142.943454
+EASTCRK,Eastern Creek,bioenergy_biogas,NS,-33.815468,150.854307
+EASTCRK2,Eastern Creek 2,bioenergy_biogas,NS,-33.815468,150.854307
+EDENVSF,Edenvale,solar_utility,QL,-26.947486,150.578494
+EDLRGNRD,Roghan Road,bioenergy_biogas,QL,-27.342062,153.049494
+EILDON,Eildon,hydro,VI,-37.221262,145.920966
+EILDONPD,Eildon,hydro,VI,-37.221774,145.922582
+ELAINEWF,Elaine,wind,VI,-37.6352,144.0237
+EMERASF,Emerald,solar_utility,QL,-23.50879,148.128017
+ENERGYB,Energy Brix,coal_brown,VI,-38.254444,146.413611
+ERARING,Eraring,coal_black,NS,-33.061548,151.524612
+ERB,Eraring,battery,NS,-33.066837,151.515026
+ERGT01,Eraring,distillate,NS,-33.062117,151.517224
+FINLEYSF,Finley,solar_utility,NS,-35.64421,145.508644
+FISHER,Fisher,hydro,TA,-41.672662,146.268739
+FLYCRKWF,Flyers Creek,wind,NS,-33.521475,149.045234
+FWF,Ferguson,wind,VI,-38.610902,143.179321
+GANGARR,Gangarri,solar_utility,QL,-26.254813,149.986704
+GANNBESS,Gannawarra,battery,VI,-33.735056,143.779462
+GANNSF,Gannawarra,solar_utility,VI,-35.73,143.7711
+GEORGTWN,George Town,distillate,TA,-41.091063,146.893204
+GERMCRK,German Creek,gas_wcmg,QL,-22.928526,148.549097
+GIRGSF,Girgarre,solar_utility,VI,-26.2548,149.9867
+GLBWNHYD,Glenbawn,hydro,NS,-32.107937,150.999481
+GLENMAGG,Glenmaggie,hydro,VI,-37.904836,146.800388
+GLENNCRK,Glennies Creek,gas_wcmg,NS,-32.464343,151.130432
+GLENSF,Glenrowan,solar_utility,VI,-36.464,146.221
+GLRWNSF,Glenrowan West,solar_utility,VI,-36.488083,146.146887
+GNNDHSF,Gunnedah,solar_utility,NS,-30.965469,150.367917
+GOONUMSF,Goonumbla,solar_utility,NS,-33.106413,148.099274
+GORDON,Gordon,hydro,TA,-42.740157,145.983375
+GPWFEST,Golden Plains East,wind,VI,-37.9729,143.783
+GRANGEAV,Grange Avenue,bioenergy_biogas,NS,-33.713011,150.83316
+GRANWF,Granville Harbour,wind,TA,-41.802,145.056
+GREENB,Greenbank,battery,QL,-27.733562,152.955042
+GRIFSF,Griffith,solar_utility,NS,-34.317414,146.120739
+GROSV1,Grosvenor 1,gas_wcmg,QL,-21.929194,148.032416
+GROSV2,Grosvenor 2,gas_wcmg,QL,-21.929194,148.032416
+GSTONE,Gladstone,coal_black,QL,-23.848741,151.220787
+GSWF,Goyder South,wind,SA,-33.682196,138.936249
+GULLRGWF,Gullen Range,solar_utility,NS,-34.624512,149.458549
+GUNNING,Gunning,wind,NS,-34.676361,149.66443
+HALAMRD,Hallam Road,bioenergy_biogas,VI,-38.052181,145.267798
+HALLWF,Hallett 1,wind,SA,-33.328434,138.704669
+HALLWF2,Hallett 2,wind,SA,-33.53821,138.857215
+HAMISF,Hamilton,solar_utility,QL,-20.468593,147.799484
+HAMPTON,Hampton,wind,NS,-33.649722,150.05
+HASTING,Hastings,gas_ocgt,VI,-38.295952,145.221926
+HAUGHT1,Haughton,solar_utility,QL,-19.732168,147.076137
+HAYMSF,Hayman,solar_utility,QL,-20.487516,147.744778
+HAZEL,Hazelwood,coal_brown,VI,-38.270575,146.389794
+HBESS,Hazelwood BESS,battery,VI,-38.269216,146.394724
+HD1WF,Hawkesdale,wind,VI,-38.148008,142.360925
+HEPWIND,Hepburn,wind,VI,-37.424555,144.115711
+HEZ,Hunter Economic Zone,distillate,NS,-32.835481,151.451033
+HILLSTN,Hillston Sun,solar_utility,NS,-33.532991,145.522279
+HLMSEW01,Hallam,hydro,VI,-38.143332,145.119964
+HORNSDAL,Hornsdale,wind,SA,-33.05982,138.537673
+HORNSDAL2,Hornsdale 2,wind,SA,-33.05982,138.537673
+HORNSDAL3,Hornsdale 3,wind,SA,-33.05982,138.537673
+HORNSDPR,Hornsdale Power Reserve,battery,SA,-33.085519,138.521914
+HUGSF,Hughenden,solar_utility,QL,-20.854794,144.186048
+HUMENSW,Hume,hydro,NS,-36.106383,147.032263
+HUMEV,Hume,hydro,VI,-36.106887,147.032572
+HUNTER,Hunter,gas_ocgt,NS,-32.793406,151.478353
+HUNTVGT,Hunter Valley,distillate,NS,-32.389989,150.965963
+HVWW,Happy Valley,battery,SA,-35.063118,138.56476
+ICSM,Isis Central Sugar Mill,bioenergy_biomass,QL,-25.197619,152.206949
+INVICTA,Invicta Sugar Mill,bioenergy_biomass,QL,-19.51579,147.10653
+JACKSGUL,Jacks Gully,bioenergy_biogas,NS,-34.072955,150.743691
+JBUTTERS,John Butters,hydro,TA,-42.15589,145.536508
+JEERA,Jeeralang A,gas_ocgt,VI,-38.275111,146.427046
+JEERB,Jeeralang B,gas_ocgt,VI,-38.273845,146.424827
+JEMALNG1,Jemalong,solar_utility,NS,-33.388764,147.669375
+JNDSHPS,Jindabyne,hydro,NS,-36.434918,148.63057
+JOUNAMA,Jounama,hydro,NS,-35.561274,148.306384
+JUNEESF,Junee,solar_utility,NS,-34.81124,147.572099
+KABANWF,Kaban,wind,QL,-17.560606,145.413125
+KAREEYA,Kareeya,hydro,QL,-17.766456,145.576884
+KARSF,Karadoc,solar_utility,VI,-34.227904,142.28033
+KEEPIT,Keepit,hydro,NS,-30.87868,150.491876
+KENNEDY,Kennedy Energy Park,battery_charging,QL,-20.872792,144.413034
+KERNGSP,Kerang,solar_utility,VI,-35.779895,143.941051
+KESS1,Koorangie,battery,VI,-35.735367,143.754813
+KIAMSF1,Kiamal,solar_utility,VI,-35.018133,142.302953
+KIATAWF,Kiata,wind,VI,-36.397693,141.746827
+KINCUMB,Kincumber,bioenergy_biogas,NS,-33.477111,151.402603
+KINGASF,Kingaroy,solar_utility,QL,-26.537087,151.890398
+KOGANCK,Kogan Creek,coal_black,QL,-26.915285,150.748948
+KRCCOGEN,KRC Cogen,gas_ocgt,QL,-27.57359,151.926883
+KSP1,Kidston,solar_utility,QL,-18.88,144.151
+LADBROKE,Ladbroke Grove,gas_ocgt,SA,-37.456183,140.782699
+LBBESS,Lake Bonney,battery,SA,-37.738787,140.384672
+LEM_WIL,Lemonthyme / Wilmot,hydro,TA,-41.483135,146.125338
+LGAPWF1,Lincoln Gap,wind,SA,-32.546333,137.552763
+LIDDELL,Liddell,coal_black,NS,-32.369027,150.980112
+LILYVASF,Lilyvale,solar_utility,QL,-23.070504,148.413865
+LIMBESS,Limondale,battery,NS,-34.769354,143.559464
+LIMOSF1,Limondale,solar_utility,NS,-34.775502,143.508046
+LIMOSF2,Limondale 2,solar_utility,NS,-34.775502,143.508046
+LI_WY_CA,Catagunya / Liapootah / Wayatinah,distillate,TA,-42.376131,146.509824
+LKBONNY1,Lake Bonney,wind,SA,-37.760504,140.405541
+LKBONNY3,Lake Bonney 3,wind,SA,-37.760504,140.405541
+LKBONNY_2,Lake Bonney 2,wind,SA,-37.760504,140.405541
+LK_ECHO,Lake Echo,hydro,TA,-42.253339,146.620515
+LNGS,Laverton North,gas_ocgt,VI,-37.841693,144.788006
+LONGFORD,Longford,gas_ocgt,VI,-38.223244,147.1631
+LONSDALE,Lonsdale,distillate,SA,-35.109718,138.490962
+LOYYANGA,Loy Yang A,coal_brown,VI,-38.250622,146.576361
+LOYYB,Loy Yang B,coal_brown,VI,-38.253619,146.585593
+LRSF,Longreach,solar_utility,QL,-23.455048,144.227917
+LUCAS2S2,Lucas Heights 2,bioenergy_biogas,NS,-34.044088,150.972475
+LUCASHGT,Lucas Heights,bioenergy_biogas,NS,-34.04829,150.973916
+LVES,Latrobe Valley,battery,VI,-38.258183,146.418614
+MACARTH,Macarthur,wind,VI,-38.043483,142.179081
+MACKAY,Mackay,distillate,QL,-21.144441,149.159171
+MACKNTSH,Mackintosh,hydro,TA,-41.701363,145.646558
+MANNSF,Mannum 2,solar_utility,SA,-34.9144,139.2681
+MANNUMB,Mannum,battery,SA,-34.917537,139.262695
+MANSLR,Manildra,solar_utility,NS,-33.172831,148.71824
+MAPS2,Mannum Pumping Station,solar_utility,SA,-34.920217,139.314438
+MAROOWF1,Maroona,wind,VI,-37.41875,142.82434
+MARYRSF,Maryrorough,solar_utility,QL,-27.708973,151.546869
+MBAHNTH,Moranbah North,gas_wcmg,QL,-21.978481,148.004809
+MBPS2,Murray Bridge-Onkaparinga,solar_utility,SA,-35.094093,139.211511
+MCINTYR,MacIntyre,wind,QL,-28.2163,152.0327
+MCKAY,Bogong / Mackay,hydro,VI,-36.805471,147.227845
+MEADOWBK,Meadowbank,distillate,TA,-42.610835,146.846388
+METZSF,Metz N,solar_utility,NS,-30.4915,151.6701
+MEWF,Mt Emerald,wind,QL,-17.133248,145.380037
+MIDDLSF1,Middlemount,solar_utility,QL,-22.822235,148.720115
+MIDLDPS,Midlands,hydro,TA,-42.085747,147.274558
+MILLMERN,Millmerran,coal_black,QL,-27.961657,151.28091
+MINTARO,Mintaro,gas_ocgt,SA,-33.903149,138.738797
+MLLFGEF,Mugga Lane,bioenergy_biogas,NS,-35.38517,149.137937
+MLSP,Mugga Lane,solar_utility,NS,-35.398441,149.14906
+MLWF,Mortons Lane,wind,VI,-37.833186,142.465288
+MM,Munmorah,coal_black,NS,-33.211781,151.542161
+MOKOSF,Mokoan,solar_utility,VI,-36.487519,146.122634
+MOLNGSF1,Molong,solar_utility,NS,-33.082578,148.900073
+MOORAWF1,Moorabool,wind,VI,-37.739433,144.171985
+MORANBAH,Moranbah,gas_recip,QL,-21.962469,148.006004
+MOREESF,Moree,solar_utility,NS,-29.572607,149.861266
+MORNW,Mornington Disposal,bioenergy_biogas,VI,-38.392054,144.854791
+MORTLK,Mortlake,gas_ocgt,VI,-38.062628,142.66633
+MOUSF,Moura,solar_utility,QL,-24.509628,150.076648
+MP,Mt Piper,coal_black,NS,-33.360715,150.035698
+MREHA3,Melbourne A3,battery,VI,-37.663819,144.726859
+MRTLSWF,Mortlake South,wind,VI,-38.147965,142.882246
+MSTUART,Mt Stuart,distillate,QL,-19.337156,146.851239
+MTGELWF,Mt Gellibrand,wind,VI,-38.257657,143.798651
+MTMERCER,Mt Mercer,wind,VI,-37.847593,143.870183
+MTMILLAR,Mt Millar,wind,SA,-33.619342,136.717568
+MUCRKSF,Munna Creek,solar_utility,QL,-25.882106,152.459626
+MURRAY,Murray,hydro,VI,-36.245992,148.188552
+MUSSELRO,Musselroe,wind,TA,-40.777105,148.006315
+MUWAWF,Murra Warra,wind,VI,-36.438821,142.246003
+MWPS,Morganwhyalla Pipeline,solar_utility,SA,-33.97382,139.193756
+NASF,Narromine,solar_utility,NS,-32.218323,148.254523
+NBHWF,North Brown Hill,wind,SA,-33.228116,138.716888
+NEVERSF,Nevertire,solar_utility,NS,-31.831044,147.705178
+NEWENSF,New England,battery,NS,-30.627323,151.556425
+NEWPORT,Newport,gas_steam,VI,-37.841374,144.895479
+NINEWIL,Willoughby,distillate,NS,-33.810858,151.196599
+NORTHP,Northern,coal_brown,SA,-32.5429,137.7874
+NPPPPS,Pelican Point,gas_ccgt,SA,-34.764365,138.505399
+NUMURKSF,Numurkah,solar_utility,VI,-36.159275,145.473891
+NYNGAN,Nyngan,solar_utility,NS,-31.563191,147.074195
+OAKEY,Oakey,gas_ocgt,QL,-27.418207,151.678887
+OAKEY1SF,Oakey Solar Farm,solar_utility,QL,-27.402454,151.642576
+OAKEY2SF,Oakey 2,solar_utility,QL,-27.402454,151.642576
+OAKLAND,Oaklands Hill,wind,VI,-37.679481,142.552995
+OAKY2,Oaky Creek 2,gas_wcmg,QL,-23.048717,148.484462
+OCPS,Oaky Creek,gas_recip,QL,-23.048717,148.484462
+OSBORNE,Osborne,gas_ccgt,SA,-34.7977,138.508099
+PALOONA,Paloona,hydro,TA,-41.28268,146.24858
+PAREPW,Port Augusta Energy Park,solar_utility,SA,-32.595609,137.885629
+PEDLER,Pedler Creek,bioenergy_biogas,SA,-35.202388,138.501214
+PIBESS,Phillip Island,battery,VI,-38.483293,145.22488
+PINDARI,Pindari,hydro,NS,-29.388034,151.244774
+PIONEER,Pioneer Sugar Mill,bioenergy_biomass,QL,-19.557546,147.330825
+PLAYF,Playford B,coal_brown,SA,-32.538886,137.781822
+PMATTAEP,Earthpower,gas_recip,NS,-33.824397,151.042142
+PORTLATT,Port Latta,distillate,TA,-40.857362,145.384824
+PORTLCN,Port Lincoln,distillate,SA,-34.700616,135.80453
+PORTWF,Portland,wind,VI,-38.361417,141.38456
+PRDSO_WALPOLE,Walpole,hydro,WE,-34.988023,116.722925
+PSF,Parkes,solar_utility,NS,-33.113056,148.076372
+PTINA,Poatina,hydro,TA,-41.805073,146.924365
+QBYNB,Queanbeyan,battery,NS,-35.339311,149.215101
+QP,Quorn Park,battery,NS,-33.079517,148.089521
+QUARANTN,Quarantine,gas_ocgt,SA,-34.779074,138.522455
+QUERIVER,Que River,distillate,TA,-41.610502,145.544305
+RACOMIL,Racecourse Mill,bioenergy_biomass,QL,-21.163842,149.135738
+RANGEB,Rangebank,battery,VI,-38.0852,145.259434
+REDBANK1,Redbank,coal_black,NS,-32.58,151.072
+REECE,Reece,hydro,TA,-41.723131,145.136468
+REMOUNT,Remount,bioenergy_biogas,TA,-41.398447,147.1495
+REPULSE,Repulse,hydro,TA,-42.507987,146.64717
+RESS,Riverina 1,battery,NS,-34.646668,146.034982
+RIVNB,Riverina 2,battery,NS,-34.646624,146.035025
+ROCHEDAL,Rochedale,bioenergy_biogas,QL,-27.555798,153.123155
+ROMA,Roma,gas_ocgt,QL,-26.576788,148.839485
+ROWALLAN,Rowallan,hydro,TA,-41.72957,146.218087
+ROYALLA,Royalla,solar_utility,NS,-35.486052,149.141966
+RPCG,Rocky Point Cogen,bioenergy_biomass,QL,-27.733564,153.326464
+RRSF,Ross River,solar_utility,QL,-19.425305,146.715686
+RUBICON,Rubicon,hydro,VI,-37.292453,145.818202
+RUGBYR,Rugby Run,solar_utility,QL,-21.940469,147.880877
+RYANCWF,Ryan Corner,wind,VI,-38.271156,142.14003
+RYEPARK,Rye Park,wind,NS,-34.63317,148.95364
+SALTCRK,Salt Creek,wind,VI,-37.918698,142.796027
+SAPHWF1,Sapphire,wind,NS,-29.710273,151.44558
+SATGN,Temporary Generation North,distillate,SA,-34.719707,138.668425
+SATGS,Temporary Generation South,distillate,SA,-35.096799,138.483997
+SEBSF,Sebastopol,solar_utility,NS,-34.603287,147.554757
+SHEP1,Shepparton,bioenergy_biogas,VI,-36.322223,145.379291
+SHOAL,Shoalhaven Starches,gas_ocgt,NS,-34.8547,150.6138
+SHOALHAV,Shoalhaven,hydro,NS,-34.733085,150.4667
+SITHE,Smithfield,gas_ccgt,NS,-33.850023,150.950051
+SKSF,South Keswick,solar_utility,NS,-32.27286,148.649836
+SLDCBLK,St Leonards Data Centre,battery_charging,TA,-41.440151,147.174429
+SMCSF,Sun Metals,solar_utility,QL,-19.437318,146.696015
+SMTHBES1,Smithfield,battery,NS,-33.849972,150.947448
+SNAPPER,Snapper Point,gas_ocgt,SA,-34.76452,138.50819
+SNB1,Supernode,battery,QL,-27.458521,153.111745
+SNOWNTH,Snowtown North,wind,SA,-33.756479,138.143043
+SNOWSTH,Snowtown South,wind,SA,-33.862624,138.130367
+SNOWTOWN,Snowtown,wind,SA,-33.691598,138.166022
+SNOWY2,Tumut,hydro,NS,-35.953492,148.369693
+SNOWY3,Guthega,hydro,NS,-36.349772,148.41403
+SNOWY6,Blowering,hydro,NS,-35.397402,148.247225
+SNUG,Snuggery,distillate,SA,-37.664996,140.414686
+SNWYGJP2,Jindabyne Pump At Guthega,pumps,NS,-36.434918,148.63057
+SRSF,Susan River,solar_utility,QL,-25.420275,152.742028
+STANVAC,Port Stanvac,distillate,SA,-35.110345,138.490872
+STANWELL,Stanwell,coal_black,QL,-23.507501,150.317884
+STAPYLTON,Stapylton,bioenergy_biogas,QL,-27.736111,153.245931
+STARFHILL,Starfish Hill,wind,SA,-35.578983,138.139653
+STGEORGE,St George Leagues Club,distillate,NS,-33.974819,151.129354
+STHBKTEC,Southbank Institute Of Technology,distillate,QL,-27.480589,153.020999
+STOCKYD,Stockyard Hill,wind,VI,-37.53568,143.252548
+STUBSF,Stubbo,solar_utility,NS,-32.26254,149.589068
+STWF,Silverton,wind,NS,-31.86095,141.296349
+SUNRSF1,Sunraysia,solar_utility,NS,-34.821489,143.50916
+SUNTPSF,Suntop,solar_utility,NS,-32.5742,148.860469
+SVALE,Springvale,bioenergy_biogas,VI,-37.973375,145.139695
+SWAN_B,Swanbank B,coal_black,QL,-27.655286,152.818644
+SWAN_E,Swanbank E,gas_ccgt,QL,-27.655286,152.818644
+TABMILL2,Tableland Mill,bioenergy_biomass,QL,-17.119813,145.34513
+TAHMOOR,Tahmoor,gas_wcmg,NS,-34.249117,150.577718
+TALLAWAR,Tallawarra,gas_ccgt,NS,-34.523089,150.808566
+TALWB,Tallawarra B,gas_ocgt,NS,-34.524833,150.806579
+TARALGA,Taralga,wind,NS,-34.425387,149.859603
+TARONG,Tarong,coal_black,QL,-26.774397,151.917838
+TARONGN,Tarong North,coal_black,QL,-26.774397,151.917838
+TARRALEA,Tarraleah,hydro,TA,-42.301736,146.456661
+TATIARA,Tataria,distillate,SA,-36.326977,140.737035
+TATURA,Tatura,bioenergy_biogas,VI,-36.47915,145.235037
+TB2SF,Tailem Bend 2,battery,SA,-35.28,139.49
+TBSF,Tailem Bend,solar_utility,SA,-35.28,139.49
+TEMPB,Templers,battery,SA,-34.464594,138.77013
+TERALBA,Teralba,gas_wcmg,NS,-32.945557,151.612042
+TERMSTOR,Terminal,hydro,SA,-34.84014,138.712137
+TGNSS,Traralgon Network Support,gas_recip,VI,-37.833513,144.965955
+THEDROP,The Drop,hydro,NS,-35.973527,145.999274
+TIB,Torrens Island,battery,SA,-34.805831,138.524192
+TIMWEST,Timboon West,wind,VI,-38.528351,142.916231
+TITREE,Veolia Ti Tree,bioenergy_biogas,QL,-27.695551,152.650313
+TOORAWF,Toora,wind,VI,-38.653528,146.339774
+TORRIS,Torrens Island,gas_steam,SA,-34.804559,138.522229
+TOWER,Tower,gas_wcmg,NS,-34.219461,150.718012
+TREVALLN,Trevallyn,hydro,TA,-41.422302,147.112025
+TRIBUTE,Tribute,hydro,TA,-41.811468,145.653252
+TULLYSM,Tully Sugar Mill,bioenergy_biomass,QL,-17.937329,145.92739
+TUMUT3,Tumut 3,hydro,NS,-35.610817,148.292644
+TUNGATIN,Tungatinah,hydro,TA,-42.296396,146.455881
+TVCCPS,Tamar Valley,gas_ccgt,TA,-41.139268,146.906185
+ULBESS,Ulinda Park,battery,QL,-26.92635,150.717472
+URANQ,Uranquinty,gas_ocgt,NS,-35.180226,147.21566
+VALDORA,Sunshine Coast,solar_utility,QL,-26.560799,153.025947
+VBB,Victorian Big Battery,battery,VI,-38.03828,144.291003
+VICMILL,Victoria Mill,bioenergy_biomass,QL,-18.650208,146.200866
+VP,Vales Point B,coal_black,NS,-33.164639,151.544116
+VPGS,Valley Power Peaking,gas_ocgt,VI,-38.252601,146.588906
+WAGGNSF,Wagga North,solar_utility,NS,-35.069081,147.438227
+WALGRV,Wallgrove,battery,NS,-33.817476,150.827276
+WANDBG,Wandoan South,battery,QL,-26.263986,149.772871
+WANDSF,Wandoan,solar_utility,QL,-26.263564,149.772243
+WARWSF,Warwick,solar_utility,QL,-28.18321,152.066792
+WATERLWF,Waterloo,wind,SA,-33.991095,138.915723
+WAUBRAWF,Waubra,wind,VI,-37.357979,143.5926
+WDBESS,Western Downs,battery,QL,-26.952008,150.694188
+WDBESS2,Western Downs 2,battery,QL,-26.951989,150.694141
+WDGPH,Western Downs,solar_utility,QL,-26.927922,150.601542
+WDLNGN,Woodlawn,bioenergy_biogas,NS,-35.05928,149.5749
+WELLSF1,Wellington,solar_utility,NS,-32.5207,148.9675
+WELNSF,Wellington North,solar_utility,NS,-32.514353,148.957634
+WEMENSF1,Wemen,solar_utility,VI,-34.80259,142.543348
+WESTCBT,Western Suburbs League Club,distillate,NS,-34.051073,150.832757
+WESTILLA,West Illawarra Leagues Club,distillate,NS,-34.451645,150.843037
+WG,Warragamba,hydro,NS,-33.883064,150.595436
+WGWF,Willogoleche,wind,SA,-33.393569,138.84821
+WHIT1,Whitwood Road,bioenergy_biogas,QL,-27.620454,152.824409
+WHITSF,Whitsunday,solar_utility,QL,-20.537259,147.80475
+WILGAPK,Wilga Park,gas_recip,NS,-30.314444,149.652768
+WILGAPKB,Wilga Park B,gas_recip,NS,-30.314444,149.652768
+WILLHOV,William Hovel,hydro,VI,-36.925216,146.389418
+WINDHILL,Windy Hill,wind,QL,-17.590399,145.52968
+WINGF1,Wingfield,bioenergy_biogas,SA,-34.835138,138.548949
+WINGF2,Wingfield 2,bioenergy_biogas,SA,-34.835138,138.548949
+WINTSF1,Winton,solar_utility,VI,-36.499695,146.114554
+WIVENHOE,Wivenhoe,hydro,QL,-27.372224,152.632362
+WIVENSH,Wivenhoe,hydro,QL,-27.394592,152.609237
+WKIEWA,West Kiewa,hydro,VI,-36.759674,147.186082
+WLWLSF,Walla Walla,solar_utility,NS,-35.746481,146.961838
+WNSF,Wangaratta,solar_utility,VI,-36.326757,146.359901
+WOLARSF,Wollar,solar_utility,NS,-32.407631,149.940737
+WOLLERT,Wollert,bioenergy_biogas,VI,-37.591792,145.043033
+WONWP,Wonthaggi,wind,VI,-38.60513,145.546292
+WOODLWN,Woodlawn,wind,NS,-35.081675,149.570511
+WOOLGSF,Woolooga,battery,QL,-26.084522,152.441226
+WOOLNTH1,Woolnorth,wind,TA,-40.736375,144.694821
+WOYWOY,Woy Woy,bioenergy_biogas,NS,-33.506914,151.291606
+WPWF,Wattle Point,wind,SA,-35.11541,137.718672
+WRSF1,White Rock Solar Farm,solar_utility,NS,-29.763292,151.552402
+WRWF1,White Rock Wind Farm,wind,NS,-29.7718,151.5755
+WSTWYSF,West Wyalong,solar_utility,NS,-33.795635,147.314545
+WTAHB,Waratah Super Battery,battery,NS,-33.209781,151.544911
+WUNUSF,Wunghnu,solar_utility,VI,-36.164387,145.403731
+WW,Wallerawang,coal_black,NS,-33.403889,150.084444
+WYANGALA,Wyangala A,hydro,NS,-33.980371,148.947377
+WYANGALB,Wyangala B,hydro,NS,-33.980371,148.947377
+WYASF,Wyalong,solar_utility,NS,-33.804939,147.295155
+WYNDW,Wyndham,bioenergy_biogas,VI,-37.935372,144.5898
+YABULU,Townsville,gas_ccgt,QL,-19.200374,146.618265
+YALLOURN,Yallourn W,coal_brown,VI,-38.177596,146.347508
+YAMBUK,Yambuk,wind,VI,-38.305278,142.018439
+YARANSF,Yarranlea,solar_utility,QL,-27.708939,151.532696
+YARWUN,Yarwun,gas_ccgt,QL,-23.8302,151.149692
+YATSF1,Yatpool,solar_utility,VI,-34.38073,142.20534
+YAWWF,Yawong,wind,VI,-36.471022,143.361722
+YENDONWF,Yendon,wind,VI,-37.630952,144.022463
+YSWF,Yaloak South,wind,VI,-37.716474,144.241947
+YWNGAHYD,Yarrawonga,hydro,VI,-36.009466,145.999568

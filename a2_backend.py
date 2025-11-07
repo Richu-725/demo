@@ -3,6 +3,25 @@
 This module orchestrates the data engineering workflow for COMP5339 A2.
 It provides a CLI with build/stream/loop modes and exposes pure helpers
 for individual steps so the frontend can import and reuse shared logic.
+
+Usage
+-----
+Run `python a2_backend.py --mode build` to fetch data into the cache,
+`--mode stream` to publish the most recent cache over MQTT, or
+`--mode loop` to continuously rebuild and stream on a timer. Environment
+variables such as `OE_API_KEY`, `A2_START`, and `A2_END` supply defaults,
+while CLI flags override individual settings. Use `--facility-cache-only`
+to reuse cached facility metadata without calling the facilities API, and
+tune `A2_BUDGET_ALERT_THRESHOLD` to receive early warnings before the
+request budget is exhausted.
+
+Logic overview
+--------------
+1. Resolve ``Settings`` from env/CLI, prepare cache/tmp folders, and guard API budget.
+2. Discover facilities for the requested network and optionally filter by codes.
+3. Pull raw metric time series from OpenElectricity and tidy them into one DataFrame.
+4. Harmonise units, pivot to a wide schema, enrich with facility metadata, and write parquet + manifest.
+5. Stream mode reuses the cache to emit MQTT ``MetricEvent`` payloads (dry-run skips publishes).
 """
 
 from __future__ import annotations
@@ -44,35 +63,56 @@ MANIFEST_FILENAME = "manifest.csv"
 class RequestBudget:
     """Track the remaining API request allowance."""
 
-    def __init__(self, limit: int) -> None:
+    def __init__(self, limit: int, *, warn_threshold: float = 0.1) -> None:
+        """Initialise the budget with a daily limit, zero usage, and optional low-budget warning."""
         self.limit = limit
         self.used = 0
+        self.warn_threshold = max(0.0, min(1.0, warn_threshold))
+        self._warned = False
 
     @property
     def remaining(self) -> int:
+        """Number of requests still available before hitting the limit."""
         return max(self.limit - self.used, 0)
 
     def consume(self, amount: int = 1) -> None:
+        """Record request usage and raise if the allowance would be exceeded."""
         if self.used + amount > self.limit:
             raise RuntimeError("Request budget exceeded; aborting to stay within daily limits.")
         self.used += amount
+        if (
+            self.warn_threshold > 0
+            and not self._warned
+            and self.limit > 0
+            and self.remaining <= self.limit * self.warn_threshold
+        ):
+            LOGGER.warning(
+                "API request budget low: remaining=%s limit=%s threshold=%.0f%%",
+                self.remaining,
+                self.limit,
+                self.warn_threshold * 100,
+            )
+            self._warned = True
 
 
 class OpenElectricityClient:
     """Thin HTTP client with pacing, retry, and request budget tracking."""
 
-    def __init__(self, api_key: str, *, request_budget: int) -> None:
+    def __init__(self, api_key: str, *, request_budget: int, alert_threshold: float = 0.1) -> None:
+        """Create a session bound to the OpenElectricity API with a request budget."""
         self._session = requests.Session()
         self._session.headers.update({"Authorization": f"Bearer {api_key}"})
-        self._budget = RequestBudget(request_budget)
+        self._budget = RequestBudget(request_budget, warn_threshold=alert_threshold)
         self._last_request_ts = 0.0
 
     def _pace(self) -> None:
+        """Sleep just enough to respect the minimum interval between requests."""
         elapsed = time.monotonic() - self._last_request_ts
         if elapsed < REQUEST_MIN_INTERVAL:
             time.sleep(REQUEST_MIN_INTERVAL - elapsed)
 
     def _request(self, method: str, path: str, *, params: Optional[Sequence[Tuple[str, Any]]] = None) -> requests.Response:
+        """Perform an HTTP request with retry/backoff handling and budget tracking."""
         self._budget.consume()
         self._pace()
         url = f"{BASE_URL}{path}"
@@ -123,16 +163,27 @@ class OpenElectricityClient:
         return response
 
     def get_json(self, path: str, *, params: Optional[Sequence[Tuple[str, Any]]] = None) -> Dict[str, Any]:
+        """Issue a GET request and return the parsed JSON payload."""
         response = self._request("GET", path, params=params)
         return response.json()
 
     def close(self) -> None:
+        """Close the underlying requests session."""
+        if self._budget.used > 0:
+            LOGGER.info(
+                "API usage summary: used=%s remaining=%s limit=%s",
+                self._budget.used,
+                self._budget.remaining,
+                self._budget.limit,
+            )
         self._session.close()
 
     def __enter__(self) -> "OpenElectricityClient":
+        """Support context-manager usage."""
         return self
 
     def __exit__(self, exc_type, exc, tb) -> None:  # type: ignore[override]
+        """Ensure the HTTP session is closed when leaving a context."""
         self.close()
 
 # ---------------------------------------------------------------------------
@@ -164,8 +215,11 @@ class Settings:
     cache_dir: Path = field(default_factory=lambda: Path("data/cache"))
     tmp_dir: Path = field(default_factory=lambda: Path("data/tmp"))
     request_budget: int = 450
+    request_budget_alert_threshold: float = 0.1
     metrics: Tuple[str, ...] = ("power", "emissions")
     facility_codes: Optional[Tuple[str, ...]] = None
+    facility_cache_only: bool = False
+    cache_only: bool = False
     interval: str = "5m"
     mqtt_host: str = "localhost"
     mqtt_port: int = 1883
@@ -173,6 +227,8 @@ class Settings:
     loop_delay: float = 60.0
     dry_run: bool = False
     log_level: str = "INFO"
+    facility_cache_path: Path = field(default_factory=lambda: Path("data/cache/facilities_catalog.parquet"))
+    facility_cache_ttl: int = 86400
 
     @staticmethod
     def from_env() -> "Settings":
@@ -189,10 +245,15 @@ class Settings:
         tmp_dir = Path(env.get("A2_TMP_DIR", "data/tmp"))
 
         request_budget = int(env.get("A2_REQUEST_BUDGET", "450"))
+        request_budget_alert_threshold = float(env.get("A2_BUDGET_ALERT_THRESHOLD", "0.1"))
         metrics_env = env.get("A2_METRICS")
         metrics = tuple(m.strip() for m in metrics_env.split(",")) if metrics_env else ("power", "emissions")
         facilities_env = env.get("A2_FACILITY_CODES")
         facility_codes = tuple(code.strip() for code in facilities_env.split(",")) if facilities_env else None
+        facility_cache_only = env.get("A2_FACILITY_CACHE_ONLY", "0") in {"1", "true", "True"}
+        cache_only = env.get("A2_CACHE_ONLY", "0") in {"1", "true", "True"}
+        if cache_only:
+            facility_cache_only = True
         interval = env.get("A2_INTERVAL", "5m")
         loop_delay = float(env.get("A2_LOOP_DELAY", "60"))
         mqtt_host = env.get("MQTT_HOST", "localhost")
@@ -200,6 +261,8 @@ class Settings:
         mqtt_keepalive = int(env.get("MQTT_KEEPALIVE", "60"))
         dry_run = env.get("A2_DRY_RUN", "0") in {"1", "true", "True"}
         log_level = env.get("A2_LOG_LEVEL", "INFO")
+        facility_cache_path = Path(env.get("A2_FACILITY_CACHE_PATH", str(cache_dir / "facilities_catalog.parquet")))
+        facility_cache_ttl = int(env.get("A2_FACILITY_CACHE_TTL", "86400"))
 
         return Settings(
             api_key=api_key,
@@ -209,8 +272,11 @@ class Settings:
             cache_dir=cache_dir,
             tmp_dir=tmp_dir,
             request_budget=request_budget,
+            request_budget_alert_threshold=request_budget_alert_threshold,
             metrics=metrics,
             facility_codes=facility_codes,
+            facility_cache_only=facility_cache_only,
+            cache_only=cache_only,
             interval=interval,
             mqtt_host=mqtt_host,
             mqtt_port=mqtt_port,
@@ -218,6 +284,8 @@ class Settings:
             loop_delay=loop_delay,
             dry_run=dry_run,
             log_level=log_level,
+            facility_cache_path=facility_cache_path,
+            facility_cache_ttl=facility_cache_ttl,
         )
 
     def with_overrides(self, **kwargs: object) -> "Settings":
@@ -277,13 +345,46 @@ def topic_for(facility: FacilityPoint) -> str:
 
 
 def _format_timestamp(value: Optional[datetime]) -> Optional[str]:
+    """Serialise datetimes as API-friendly strings while preserving None."""
     if value is None:
         return None
     return value.strftime("%Y-%m-%dT%H:%M:%S")
 
 
-def discover_facilities(client: OpenElectricityClient, network: str) -> pd.DataFrame:
-    """Fetch facility metadata for the given network."""
+def discover_facilities(
+    client: OpenElectricityClient,
+    network: str,
+    *,
+    cache_path: Optional[Path] = None,
+    cache_ttl: Optional[int] = None,
+    require_cache: bool = False,
+) -> pd.DataFrame:
+    """Fetch facility metadata for the given network with optional caching or cache-only operation."""
+    cache_file: Optional[Path] = cache_path if cache_path is not None else None
+    if cache_file is not None:
+        try:
+            if cache_file.exists():
+                cached = pd.read_parquet(cache_file)
+                if not cached.empty:
+                    age_seconds = time.time() - cache_file.stat().st_mtime
+                    ttl = cache_ttl if cache_ttl is not None else 0
+                    if require_cache:
+                        LOGGER.debug("Loaded facility metadata from cache %s (cache only mode)", cache_file)
+                        return cached
+                    if ttl <= 0 or age_seconds <= ttl:
+                        LOGGER.debug("Loaded facility metadata from cache %s (age=%.0fs)", cache_file, age_seconds)
+                        return cached
+                elif require_cache:
+                    raise RuntimeError(f"Facility cache at {cache_file} is empty; cannot continue with cache-only mode.")
+            elif require_cache:
+                raise RuntimeError(f"Facility cache not found at {cache_file}; run a build without cache-only mode first.")
+        except Exception as exc:  # pragma: no cover - cache read is best-effort
+            if require_cache:
+                raise RuntimeError(f"Failed to read facility cache {cache_file}: {exc}") from exc
+            LOGGER.warning("Failed to load facility cache %s: %s", cache_file, exc)
+    elif require_cache:
+        raise RuntimeError("Facility cache path not provided; cannot run in cache-only mode.")
+
     params: List[Tuple[str, Any]] = [("network_id", network)]
     payload = client.get_json(FACILITIES_ENDPOINT, params=params)
     facilities = payload.get("data", [])
@@ -321,6 +422,13 @@ def discover_facilities(client: OpenElectricityClient, network: str) -> pd.DataF
         LOGGER.warning("Dropping facilities outside coordinate bounds: %s", outliers)
         df = df[bounds_mask]
     df = df.sort_values("facility_id").reset_index(drop=True)
+    if cache_file is not None:
+        try:
+            cache_file.parent.mkdir(parents=True, exist_ok=True)
+            df.to_parquet(cache_file, index=False)
+            LOGGER.debug("Wrote facility metadata cache to %s", cache_file)
+        except Exception as exc:  # pragma: no cover - cache write is best-effort
+            LOGGER.warning("Failed to write facility cache %s: %s", cache_file, exc)
     return df
 
 
@@ -434,6 +542,7 @@ def attach_facility_meta(metrics_df: pd.DataFrame, facilities_df: pd.DataFrame) 
 
 
 def _compute_md5(path: Path) -> str:
+    """Return the hexadecimal MD5 digest of a file's contents."""
     digest = hashlib.md5()
     with path.open("rb") as fh:
         for chunk in iter(lambda: fh.read(65536), b""):
@@ -486,6 +595,7 @@ def _update_manifest(
     *,
     unchanged: bool,
 ) -> None:
+    """Record the cache write in `manifest.csv`, replacing any prior entry for the resource."""
     retrieved_at = retrieved_at or datetime.utcnow()
     entry = {
         "resource_id": resource_id,
@@ -529,6 +639,7 @@ def _make_mqtt_client() -> mqtt.Client:
 
 
 def _facility_points_from_df(df: pd.DataFrame) -> Dict[str, FacilityPoint]:
+    """Build a lookup of facility metadata keyed by facility id."""
     required = {"facility_id", "name", "fuel", "state", "lat", "lon"}
     if not required.issubset(df.columns):
         missing = required.difference(df.columns)
@@ -558,10 +669,12 @@ def find_latest_cache(cache_dir: Path) -> Path:
 
 
 def _get_row_value(row: Any, name: str) -> Any:
+    """Support both attribute-style and dict-like access for row iterables."""
     return getattr(row, name) if hasattr(row, name) else row[name]
 
 
 def _event_from_row(row: Any, *, ts_ingest: Optional[datetime] = None) -> MetricEvent:
+    """Transform a metrics row into a ``MetricEvent`` ready for MQTT publish."""
     ts_raw = _get_row_value(row, "ts_event")
     ts_event = pd.to_datetime(ts_raw).to_pydatetime()
     facility_id = str(_get_row_value(row, "facility_id"))
@@ -649,6 +762,7 @@ def ensure_data_dirs(paths: Iterable[Path]) -> None:
 
 
 def _build_arg_parser() -> argparse.ArgumentParser:
+    """Create the CLI parser shared by unit tests and the ``main`` entry point."""
     parser = argparse.ArgumentParser(description="COMP5339 Assignment 2 backend pipeline")
     parser.add_argument("--mode", choices={"build", "stream", "loop"}, default="build")
     parser.add_argument("--start", help="ISO date start override (defaults to $A2_START)")
@@ -658,6 +772,16 @@ def _build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--tmp-dir", help="Path for temporary files")
     parser.add_argument("--metrics", help="Comma separated metric list (default power,emissions)")
     parser.add_argument("--facility", action="append", help="Facility code to include (repeatable)")
+    parser.add_argument(
+        "--facility-cache-only",
+        action="store_true",
+        help="Load facility metadata only from the cached parquet; do not call the facilities API.",
+    )
+    parser.add_argument(
+        "--cache-only",
+        action="store_true",
+        help="Reuse an existing metrics cache and skip all API requests.",
+    )
     parser.add_argument("--interval", help="Metric interval (default 5m)")
     parser.add_argument("--loop-delay", type=float, help="Seconds to wait between loop cycles (default 60)")
     parser.add_argument("--dry-run", action="store_true", help="Fetch and validate without writes or publishes")
@@ -668,7 +792,11 @@ def _build_arg_parser() -> argparse.ArgumentParser:
 def main(argv: Optional[Iterable[str]] = None) -> None:
     """
     Entry point for the A2 backend pipeline CLI.
-    For testing, an optional argv iterable can be provided.
+
+    Parses CLI flags (or supplied ``argv`` for testability), merges them with
+    environment defaults, and dispatches to the requested mode:
+    ``build`` writes a fresh cache, ``stream`` publishes the latest cache, and
+    ``loop`` alternates between both operations until interrupted.
     """
     parser = _build_arg_parser()
     args = parser.parse_args(list(argv) if argv is not None else None)
@@ -689,6 +817,11 @@ def main(argv: Optional[Iterable[str]] = None) -> None:
         overrides["metrics"] = tuple(part.strip() for part in args.metrics.split(","))
     if args.facility:
         overrides["facility_codes"] = tuple(args.facility)
+    if args.facility_cache_only:
+        overrides["facility_cache_only"] = True
+    if args.cache_only:
+        overrides["cache_only"] = True
+        overrides.setdefault("facility_cache_only", True)
     if args.interval:
         overrides["interval"] = args.interval
     if args.loop_delay is not None:
@@ -722,7 +855,37 @@ def main(argv: Optional[Iterable[str]] = None) -> None:
 
 
 def build_cache(settings: Settings) -> Path:
-    """Fetch, clean, and persist the latest dataset returning the cache path."""
+    """Fetch, clean, and persist the latest dataset returning the cache path.
+
+    Steps:
+        1. Optionally reuse an existing cache when ``cache_only`` is set.
+        2. Validate the requested window and derive an output filename.
+        3. Discover facilities (optionally narrowed to ``facility_codes``) using the shared HTTP client.
+        4. Iterate over each facility, downloading time-series metrics and joining them into a single tidy frame.
+        5. Reconcile units, pivot to a wide schema, and enrich with facility metadata so parquet rows are dashboard-ready.
+        6. Persist the parquet file and update ``manifest.csv`` unless ``dry_run`` is enabled.
+
+    Notes:
+        * ``cache_only`` expects a parquet produced by a prior successful build (with metric columns such as
+          ``power_mw`` and ``ts_event``); it will surface an error later in streaming if the cached file is incomplete.
+    """
+    if settings.cache_only:
+        if settings.start is not None and settings.end is not None:
+            target_name = f"{settings.network.lower()}_{settings.start.strftime('%Y%m%d%H%M')}_{settings.end.strftime('%Y%m%d%H%M')}.parquet"
+            candidate = settings.cache_dir / target_name
+            if candidate.exists():
+                LOGGER.info("Cache-only mode enabled; reusing existing cache %s", candidate)
+                return candidate
+            LOGGER.warning("Cache-only mode requested but target cache %s not found; falling back to latest cache.", candidate)
+        try:
+            latest = find_latest_cache(settings.cache_dir)
+        except FileNotFoundError as exc:
+            raise RuntimeError(
+                "Cache-only mode requested but no cache files are available. Run a full build at least once first."
+            ) from exc
+        LOGGER.info("Cache-only mode enabled; reusing latest cache %s", latest)
+        return latest
+
     if settings.start is None or settings.end is None:
         raise ValueError("Both start and end timestamps must be provided via env vars or CLI.")
     if settings.end <= settings.start:
@@ -743,8 +906,18 @@ def build_cache(settings: Settings) -> Path:
     )
 
     facilities_df: pd.DataFrame
-    with OpenElectricityClient(settings.api_key, request_budget=settings.request_budget) as client:
-        facilities_df = discover_facilities(client, settings.network)
+    with OpenElectricityClient(
+        settings.api_key,
+        request_budget=settings.request_budget,
+        alert_threshold=settings.request_budget_alert_threshold,
+    ) as client:
+        facilities_df = discover_facilities(
+            client,
+            settings.network,
+            cache_path=settings.facility_cache_path,
+            cache_ttl=settings.facility_cache_ttl,
+            require_cache=settings.facility_cache_only,
+        )
         if settings.facility_codes:
             missing = sorted(set(settings.facility_codes) - set(facilities_df["facility_id"]))
             if missing:
@@ -794,7 +967,12 @@ def build_cache(settings: Settings) -> Path:
 
 
 def stream_latest(settings: Settings, cache_path: Optional[Path] = None) -> None:
-    """Publish MetricEvents from the cache to MQTT."""
+    """Publish MetricEvents from the cache to MQTT.
+
+    Requires the parquet to include ``facility_id``, ``ts_event`` and the wide metric columns
+    (``power_mw``, ``co2_t``, ``price``, ``demand``). These are only present in caches created
+    by a full (non ``cache_only``/``dry_run``) build.
+    """
     try:
         target_path = cache_path or find_latest_cache(settings.cache_dir)
     except FileNotFoundError as exc:

@@ -5,7 +5,7 @@ This demo contains the data engineering backend for COMP5339 Assignment 2. Follo
 Prerequisites:
 - Anaconda/Miniconda installed (conda command available).
 - OpenElectricity API key stored in `API_key.txt` (already included here).
-- Git Bash or WSL recommended for Windows users to run the provided shell scripts.
+- Git Bash or WSL recommended for Windows users to run the provided shell scripts. Use `.\gbash.cmd` from this folder if you want to launch Git Bash without shadowing the WSL `bash` on `PATH`.
 
 Directory overview:
 - `a2_backend.py` – backend pipeline CLI.
@@ -61,7 +61,7 @@ Quick start (Windows PowerShell)
   ```
 - Manual backend run:
   ```powershell
-  $env:OE_API_KEY = 'oe_3ZiBEMEgtpUTaoLAHeEx3uhw'
+  $env:OE_API_KEY = 'oe_3ZgRMZCTomF3BpPcK3TzLCzs'
   $env:A2_START   = '2024-10-01T00:00:00'
   $env:A2_END     = '2024-10-01T00:15:00'
   $env:MQTT_HOST  = 'test.mosquitto.org'
@@ -98,6 +98,18 @@ Notes and tips
 - If you move the project folder, rerun `setup_comp5339a2.sh` or reapply the env var snippets so cache/temp paths update.
 - The `data/` directory is ignored during dry runs; the first real build (`--dry-run` removed) will write a parquet file and update `data/cache/manifest.csv`.
 - To publish events to an MQTT broker, remove `--dry-run` from stream mode and ensure `MQTT_HOST`/`MQTT_PORT` are set (defaults to `localhost:1883`).
+- Facility metadata is cached at `data/cache/facilities_catalog.parquet` (24h TTL by default). Override `A2_FACILITY_CACHE_TTL` or remove the file to force a refresh.
+
+----------------------------------------------------------------------
+Usage tips
+----------------------------------------------------------------------
+- Cache responses whenever possible so subsequent runs reuse the parquet artefacts instead of re-calling the API.
+- Use the existing manifest and cache files to batch downstream analysis rather than requesting the same window repeatedly.
+- Pass `--facility-cache-only` (or set `A2_FACILITY_CACHE_ONLY=1`) when you want to reuse the facility catalogue without hitting the discovery endpoint.
+- Pass `--cache-only` (or set `A2_CACHE_ONLY=1`) to recycle an existing metrics parquet and skip all API requests.
+- Monitor log output for `API usage summary` lines to understand how quickly you are consuming the request budget.
+- Adjust `A2_BUDGET_ALERT_THRESHOLD` to receive early warnings in the logs as you approach quota limits.
+- Build larger time windows less frequently and stream from cache to minimise total API calls.
 
 Troubleshooting:
 - “Missing OE_API_KEY” – ensure the env var is set in the same shell running the command.

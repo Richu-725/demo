@@ -1,0 +1,344 @@
+status,facility_id,name,state,fuel,capacity_mw,latitude,longitude
+accredited,ACC_SRPXQLE8,"Laura Johnson Home, Townview - Solar w SGU - QLD",QLD,Solar,0.2265,-20.729005,139.493224
+accredited,ACC_SRPYNS39,Leppington - Solar - NSW,NSW,Solar,0.732,-33.962343,150.801776
+accredited,ACC_SRPYNS58,Quakers Hillside Care Community - Solar w SGU - NSW,NSW,Solar,0.1996,-33.873754,151.209587
+accredited,ACC_SRPXVCN4,Rest Nominees - Solar wSGU - VIC,VIC,Solar,0.1188,-37.754520,144.980727
+accredited,ACC_SRPXQLF9,Retail First Mt Ommaney-Solar-QLD,QLD,Solar,1.0004,-27.507006,153.068285
+accredited,ACC_SRPXQLG3,Woolworths HCFDC Heathwood - Solar - QLD,QLD,Solar,1.6721,-27.541981,153.079185
+accredited,ACC_SRPVTA25,Woolworths Kings Meadow 7210 - Solar - TAS,TAS,Solar,0.2926,-31.556484,147.086076
+accredited,ACC_SRPVSAY5,CLAYTON CHURCH HOMES INC- ELIZABETH PARK - Solar w SGU - SA,SA,Solar,0.1965,-34.712389,138.685203
+accredited,ACC_SRPYNS57,Dalwood Children's Home - Solar - NSW,NSW,Solar,0.2465,-33.755819,150.957993
+accredited,ACC_SRPVSAY1,Haighs Proprietary Limited - Salisbury South - Solar - SA,SA,Solar,0.6265,-34.782776,138.642958
+accredited,ACC_SRPYNS56,Lindt & Sprungli (Australia) Pty Ltd - 1017.9kW - Solar w SGU - NSW,NSW,Solar,1.0179,-33.873754,151.209587
+accredited,ACC_SRPVSAX9,Midfield Trading Solar W SGU-SA,SA,Solar,0.6443,-34.920631,138.603969
+accredited,ACC_SRPXVCG8,Wilandra Farms Clydebank - Solar - VIC,VIC,Solar,0.155,-37.806777,145.181273
+accredited,ACC_SRPYNS13,Balickera WPS - Solar - NSW,NSW,Solar,3.1158,-31.556484,147.086076
+accredited,ACC_SRPVSAX0,The Creeks Pipeline Company Ltd - Solar - SA,SA,Solar,2.808,-32.415551,137.839844
+accredited,ACC_SRPVSAX2,Lai Industries - Solar w SGU - SA,SA,Solar,0.5445,-34.920631,138.603969
+accredited,ACC_SRPVSAY6,CLAYTON CHURCH HOMES INC- Prospect-Solar-W-SGU-SA,SA,Solar,0.198,-34.884706,138.601366
+accredited,ACC_SRPXVCP2,Kerang Solar Plant - Solar - VIC,VIC,Solar,37.2874,-35.732836,143.920514
+accredited,ACC_SRPVQLO6,Red Valley Farms - Solar- QLD,QLD,Solar,0.3801,-27.410442,151.654836
+accredited,ACC_SRPVWAH2,Region Group Warnbro Central - Solar - WA,WA,Solar,0.5736,-32.003943,115.544708
+accredited,ACC_SRPXVCP4,Southern Steel-Dandenong South - Solar - VIC,VIC,Solar,0.2,-37.754520,144.980727
+accredited,ACC_SRPVSAY9,Southern Steel-Pooraka - Solar w SGU - SA,SA,Solar,0.2498,-34.825702,138.622860
+accredited,ACC_SRPVSAY7,CLAYTON CHURCH HOMES INC- Magill-Solar-W-SGU-SA,SA,Solar,0.2001,-34.909072,138.674997
+accredited,ACC_SRPYNS53,AU186 Oakdale West 5B - Solar w SGU - NSW,NSW,Solar,0.15,-33.873754,151.209587
+accredited,ACC_SRPVWAN2,Carosue-Solar-WA,WA,Solar,8.464,-28.903938,115.111522
+accredited,ACC_SRPVSAY8,Linfox Regency Park - Solar w SGU - SA,SA,Solar,0.7,-34.920631,138.603969
+accredited,ACC_SRPVWAN1,PWR Hybrid Cataby - Solar - WA,WA,Solar,9.558,-28.903938,115.111522
+accredited,ACC_SRPYNS54,Blacktown Warehouse 1 - Solar w SGU - NSW,NSW,Solar,0.2,-33.773988,150.903619
+accredited,ACC_SRPYNS55,Blacktown Warehouse 2 - Solar w SGU - NSW,NSW,Solar,0.2,-33.873754,151.209587
+accredited,ACC_SRPVQLQ4,HCS - Solar - QLD,QLD,Solar,0.438,-27.372084,152.985031
+accredited,ACC_SRPXQLF1,Intertek Townsville - Solar  - QLD,QLD,Solar,0.182,-27.410442,151.654836
+accredited,ACC_SRPYNS65,ISLHD-Bulli Hospital - Solar - NSW,NSW,Solar,0.281,-34.336738,150.907400
+accredited,ACC_SRPVWAN3,Region Group Treendale - Solar - WA,WA,Solar,0.34,-31.950652,115.797876
+accredited,ACC_SRPYNS52,Woolworths DC Moorebank RDC 7950 - Solar - NSW,NSW,Solar,2.02,-33.962343,150.801776
+accredited,ACC_SRPYNS34,Bunnings Padstow - Solar - NSW,NSW,Solar,0.28,-33.755819,150.957993
+accredited,ACC_SRPVSAX1,Five Star Seafoods - Solar wSGU  - SA,SA,Solar,0.189,-34.920631,138.603969
+accredited,ACC_SRPVSAW5,Morgan Sawmill - Solar w SGU - SA,SA,Solar,0.199,-34.097735,139.155603
+accredited,ACC_SRPXQLG4,Northpoint Shopping Centre - Solar -  w SGU - QLD,QLD,Solar,0.298,-27.541254,151.953074
+accredited,ACC_SRPXQLH2,Ormeau - Solar w SGU - QLD,QLD,Solar,0.659,-27.541981,153.079185
+accredited,ACC_SRPYNS67,Symbion - Solar - NSW,NSW,Solar,1.751,-33.959374,150.798835
+accredited,ACC_SRPYNS44,AFS Cadell Balranald - Solar - NSW,NSW,Solar,4.827,-31.556484,147.086076
+accredited,ACC_SRPYNS62,AU544 Interlink Estate - Solar - NSW,NSW,Solar,0.54,-33.729942,150.922757
+accredited,ACC_SRPYNS77,BAE Williamtown - Solar - NSW,NSW,Solar,0.416,-31.556484,147.086076
+accredited,ACC_SRPYNS33,Bunnings Greenacre - Solar - NSW,NSW,Solar,0.2,-33.755819,150.957993
+accredited,ACC_SRPXQLG7,Caloundra NMI 31173199012 - Solar w SGU - QLD,QLD,Solar,0.228,-26.833924,152.965066
+accredited,ACC_SRPYNS68,HMC Capital Marsden Park - Solar - NSW,NSW,Solar,0.24,-33.729942,150.922757
+accredited,ACC_SRPYNS69,HMC Glenmore Park Shopping Centre - Solar - NSW,NSW,Solar,0.5,-33.959374,150.798835
+accredited,ACC_SRPVSAY3,Lambert Estate Wines Pty Ltd - Solar w SGU - SA,SA,Solar,0.223,-34.920631,138.603969
+accredited,ACC_SRPXVCI1,Martin Brower Dandenong - Solar w SGU - VIC,VIC,Solar,0.625,-37.754520,144.980727
+accredited,ACC_SRPYNS50,Mt Annan Christian College - Solar  - NSW,NSW,Solar,0.22,-33.964733,150.799384
+accredited,ACC_SRPYNS76,Scalabrini Chipping Norton - Solar w SGU - NSW,NSW,Solar,0.335,-33.922711,150.951090
+accredited,ACC_SRPXQLH1,Woolworths Darra 2695 - Solar - QLD,QLD,Solar,0.25,-27.507006,153.068285
+accredited,ACC_SRPXQLH4,Woolworths Ingham 2723 - Solar - QLD,QLD,Solar,0.275,-27.410442,151.654836
+accredited,ACC_SRPVSAZ1,Woolworths Seaford 5646 - Solar - SA,SA,Solar,0.275,-35.015228,138.559618
+accredited,ACC_SRPYNS28,MNCLHD Coffs Harbour Health Campus - Solar w SGU - NSW,NSW,Solar,1.323,-28.523500,151.976200
+accredited,ACC_SRPYNS61,Tip Top Chullora - Solar - NSW,NSW,Solar,2.018,-33.755819,150.957993
+accredited,ACC_SRPXQLC4,OZLEMFOODSWA-SOLAR w SGU-QLD,QLD,Solar,0.443,-27.541981,153.079185
+accredited,ACC_SRPXVCP3,Somerville Gardens Care Community - Solar w SGU - VIC,VIC,Solar,0.24,-37.754520,144.980727
+accredited,ACC_SRPXVCK5,Big W Mildura 560 - Solar - VIC,VIC,Solar,0.2,-37.571336,144.890577
+accredited,ACC_SRPYNS73,Bunnings Maitland - Solar - NSW,NSW,Solar,0.24,-32.810046,151.638577
+accredited,ACC_SRPYNS41,Clean Peak Energy - Goulburn Marketplace - Solar - NSW,NSW,Solar,0.288,-34.207749,150.568528
+accredited,ACC_SRPYNS71,Covenant Christian School - Solar - w SGU - NSW,NSW,Solar,0.181,-33.713284,151.215465
+accredited,ACC_SRPYNS70,EWH Food Services Kingsgrove - Solar w SGU - NSW,NSW,Solar,0.325,-33.873754,151.209587
+accredited,ACC_SRPXQLH7,Frasers Woolworths Liquor Warehouse- Solar w SGU - QLD,QLD,Solar,0.501,-27.541981,153.079185
+accredited,ACC_SRPYNS75,"Scalabrini ""The Village"" Drummoyne - Solar w SGU - NSW",NSW,Solar,0.235,-33.873754,151.209587
+accredited,ACC_SRPXNSX6,Woolworths Katoomba 1787 - Solar - NSW,NSW,Solar,0.275,-33.959374,150.798835
+accredited,ACC_SRPXQLE1,Agile Energy - BWY - 200kW solar w SGU - QLD,QLD,Solar,0.2,-27.228019,153.036599
+accredited,ACC_SRPXVCP0,Aussie Pride Produce - Solar W SGU - VIC,VIC,Solar,0.148,-36.250736,144.944329
+accredited,ACC_SRPXVCO5,Campari - SOLAR w SGU – VIC,VIC,Solar,0.65,-37.814090,144.961318
+accredited,ACC_SRPVSAW7,Chep Pallets - Solar - SA,SA,Solar,0.252,-34.847347,138.548115
+accredited,ACC_SRPXQLF6,"Heidke St, Avoca - Solar w SGU - QLD",QLD,Solar,0.198,-24.865136,152.377896
+accredited,ACC_SRPYNS82,HNELHD Tamworth - Solar - NSW,NSW,Solar,1.063,-31.556484,147.086076
+accredited,ACC_SRPYNS79,ISLHD Shoalhaven Hospital - Solar - NSW,NSW,Solar,0.5,-31.556484,147.086076
+accredited,ACC_SRPYNS60,Kingspan Insulated Panels Pty Limited - Solar w SGU - NSW,NSW,Solar,0.16,-33.873754,151.209587
+accredited,ACC_SRPXQLE5,Ornatas Tasmanian Lobster Hatchery - Solar  - QLD,QLD,Solar,0.158,-27.410442,151.654836
+accredited,ACC_WD00SA24,Goyder South Wind Farm 1B - Wind - SA,SA,Wind,195.693,-34.097735,139.155603
+accredited,ACC_SRPYNS08,Agile Energy - ECB - 348kW Solar w SGU - NSW,NSW,Solar,0.348,-27.228019,153.036599
+accredited,ACC_SRPVWAL0,ATCO Gas Australia Jandakot Microgrid - Solar - WA,WA,Solar,0.301,-32.017570,115.968672
+accredited,ACC_SRPXQLH8,Caloundra NMI 3117361486 - Solar w SGU - QLD,QLD,Solar,0.348,-26.833924,152.965066
+accredited,ACC_SRPVWAM6,City of Stirling (Administration Centre) – Solar w SGU - WA,WA,Solar,0.47,-31.950652,115.797876
+accredited,ACC_SRPVNSY6,Concord Hospital - 313.2kW - Solar w SGU - NSW,NSW,Solar,0.314,-33.873754,151.209587
+accredited,ACC_SRPXQLG1,CQFMS - Solar w SGU - QLD,QLD,Solar,0.307,-21.141607,149.186838
+accredited,ACC_SRPYNS84,Mirvac Switchyards Building 2 - Solar w SGU - NSW,NSW,Solar,0.2,-33.873754,151.209587
+accredited,ACC_SRPVSAW3,Seaford Central - Solar w SGU - SA,SA,Solar,0.465,-34.920631,138.603969
+accredited,ACC_SRPXQLG6,Stockland Rockhampton Shopping Centre - Solar - QLD,QLD,Solar,2.673,-27.410442,151.654836
+accredited,ACC_SRPXQLE0,The Good Shepherd Home - Solar w SGU - QLD,QLD,Solar,0.314,-19.310198,146.762824
+accredited,ACC_SRPXVCI5,Waverley Valley Care Community - Solar w SGU - VIC,VIC,Solar,0.15,-37.754520,144.980727
+accredited,ACC_SRPYNS81,B&J Greenacre - Solar - NSW,NSW,Solar,0.4,-33.755819,150.957993
+accredited,ACC_SRPYNS32,Bunnings Eastgardens - Solar - NSW,NSW,Solar,0.34,-33.918087,151.234095
+accredited,ACC_SRPXVCQ1,CH3059 Midwest Logistics Hub (INGH1) - Solar - VIC,VIC,Solar,1.0,-37.754520,144.980727
+accredited,ACC_SRPXVCK3,"Macaulay Rd, Kensington - Solar - VIC",VIC,Solar,0.198,-37.571336,144.890577
+accredited,ACC_SRPVWAN0,MF Logistics Bvd - Solar - WA,WA,Solar,0.781,-31.950652,115.797876
+accredited,ACC_SRPYNS37,Mirvac Switchyards Building 6 - Solar w SGU - NSW,NSW,Solar,0.2,-33.873754,151.209587
+accredited,ACC_SRPXQL34,Oxley Grove Care Community - Solar - QLD,QLD,Solar,0.278,-27.507006,153.068285
+accredited,ACC_SRPXNSW7,Stubbo - Solar - NSW,NSW,Solar,520.393,-32.015802,149.394000
+accredited,ACC_SRPXQLB7,123 Sippy Downs - Solar - QLD,QLD,Solar,0.2,-26.446472,152.968523
+accredited,ACC_SRPXQLH5,Agile Energy - RetireVerge 152kW - Solar w SGU – QLD,QLD,Solar,0.152,-27.228019,153.036599
+accredited,ACC_SRPYNS72,Baked Provisions Sydney - 200.2kW - Solar w SGU - NSW,NSW,Solar,0.2,-33.873754,151.209587
+accredited,ACC_SRPXVCQ3,Chadstone Freshfood - Solar - VIC,VIC,Solar,0.733,-37.882127,145.184951
+accredited,ACC_SRPYNS86,Mcdonald College - Solar w SGU - NSW,NSW,Solar,0.253,-33.858675,151.087266
+accredited,ACC_SRPXVCI2,Moe Newborough - Solar w SGU - VIC,VIC,Solar,0.189,-38.182139,146.291588
+accredited,ACC_SRPYNS83,Nepean Hospital - Kingswood - Solar - NSW,NSW,Solar,0.52,-33.759932,150.713491
+accredited,ACC_SRPXQLH0,PFI Darra-Solar w SGU-QLD,QLD,Solar,0.246,-27.541981,153.079185
+accredited,ACC_SRPYNS64,REMONDIS-Tomago-Solar-w SGU-NSW,NSW,Solar,0.551,-32.815000,151.701111
+accredited,ACC_SRPXQLI3,Story Fresh Produce - Solar - QLD,QLD,Solar,0.201,-27.410442,151.654836
+accredited,ACC_SRPXQLI2,TIP TOP Carrara - Solar wSGU - QLD,QLD,Solar,0.221,-27.832586,153.290556
+accredited,ACC_SRPXVCP7,Truganina - Solar - VIC,VIC,Solar,0.293,-37.840095,144.691109
+accredited,ACC_SRPXVCJ7,Petstock DC Avalon - Solar - VIC,VIC,Solar,0.4,-37.898315,144.414928
+accredited,ACC_SRPVSAZ0,REMONDIS-Wingfield-Solar-w SGU-SA,SA,Solar,0.397,-33.025198,151.554469
+accredited,ACC_SRPVSAZ7,BAE Systems Edinburgh Parks - Solar - SA,SA,Solar,0.162,-34.847347,138.548115
+accredited,ACC_SRPXVCQ2,Latrobe Leisure Morwell - Solar w SGU- VIC,VIC,Solar,0.214,-37.420180,143.908406
+accredited,ACC_SRPXQLB1,Acacia Ridge - Solar - QLD,QLD,Solar,0.444,-27.508712,153.070962
+accredited,ACC_SRPXVCQ5,GPE_LYKA WELLNESS - Solar - VIC,VIC,Solar,0.499,-37.882127,145.184951
+accredited,ACC_SRPXVCP8,Greenlink 7 - Solar - VIC,VIC,Solar,0.42,-38.092066,145.295758
+accredited,ACC_SRPYNS88,IBIS Care - Solar w SGU - NSW,NSW,Solar,0.323,-33.982269,151.109879
+accredited,ACC_SRPYNS66,Agile Energy - T&P 361kW - Solar w SGU - NSW,NSW,Solar,0.361,-27.228019,153.036599
+accredited,ACC_SRPXQLG8,Cairns Colonial Club - Solar - QLD,QLD,Solar,0.208,-17.259200,145.473229
+accredited,ACC_SRPYNS93,CALABRIA FAMILY WINES PTY LTD - Solar w SGU - NSW,NSW,Solar,1.032,-28.523500,151.976200
+accredited,ACC_SRPVSAZ4,Pikes Wines Pty Ltd - Solar w SGU - SA,SA,Solar,0.2,-34.097735,139.155603
+accredited,ACC_SRPVWAN4,Region Group Currambine - Solar - WA,WA,Solar,1.48,-31.575103,115.658206
+accredited,ACC_SRPXQLH3,Cubbie - Solar - QLD,QLD,Solar,3.44,-27.410442,151.654836
+accredited,ACC_SRPXNSU4,DHL Skyline - Solar - NSW,NSW,Solar,1.0,-33.962343,150.801776
+accredited,ACC_SRPXVCP5,Hendys Road Numurkah - Solar - VIC,VIC,Solar,6.162,-36.055319,145.478447
+accredited,ACC_SRPVSAZ5,Woolworths Golden Grove (The Stables) 5632 - Solar - SA,SA,Solar,0.2,-34.920631,138.603969
+accredited,ACC_SRPYNSA0,Gregory Hills Hotel - Solar w SGU - NSW,NSW,Solar,0.2,-34.022576,150.765531
+accredited,ACC_SRPVSAZ2,Moyhall-Solar-SA,SA,Solar,8.203,-32.415551,137.839844
+accredited,ACC_SRPXQLI8,AU371 -Lytton Industry U3 & U4 - Solar - QLD,QLD,Solar,0.291,-27.541981,153.079185
+accredited,ACC_SRPYNS90,Kerarbury Station Almond Orchard - Solar - NSW,NSW,Solar,6.004,-31.556484,147.086076
+accredited,ACC_SRPVSAZ3,Steel Building Systems - Solar - SA,SA,Solar,0.2,-34.609765,138.743423
+accredited,ACC_SRPYNS97,Temperzone - 359.52kW - Solar W SGU - NSW,NSW,Solar,0.36,-33.873754,151.209587
+accredited,ACC_SRPXQLG9,Cowboys HQ - Solar-QLD,QLD,Solar,0.264,-27.410442,151.654836
+accredited,ACC_SRPYNS99,DUX MANUFACTURING LIMITED - Solar w SGU - NSW,NSW,Solar,0.4,-34.207749,150.568528
+accredited,ACC_SRPXVCH9,GPT Highpoint DJ - Solar wSGU - VIC,VIC,Solar,0.47,-37.754520,144.980727
+accredited,ACC_SRPXQLJ2,Mercy Place Cairns-Solar w SGU -QLD,QLD,Solar,0.279,-16.930249,145.749713
+accredited,ACC_SRPXQLE4,Mirani Water Recycling Facility - Solar - QLD,QLD,Solar,0.17,-27.410442,151.654836
+accredited,ACC_SRPYNSA3,OPAL Bankstown Terrace Care Community - Solar - NSW,NSW,Solar,0.239,-33.755819,150.957993
+accredited,ACC_SRPYNSA4,OPAL Berkeley Care Community - Solar - NSW,NSW,Solar,0.169,-33.755819,150.957993
+accredited,ACC_SRPXVCQ4,UCS Pakenham - Solar  - VIC,VIC,Solar,0.177,-38.092066,145.295758
+accredited,ACC_SRPVWAN6,Armadale Shopping Centre 576kW - Solar - WA,WA,Solar,0.576,-32.017570,115.968672
+accredited,ACC_SRPVWAN7,Armadale Shopping Centre 700kW - Solar - WA,WA,Solar,0.704,-32.017570,115.968672
+accredited,ACC_SRPYNS74,AU876 Rosehill Industrial Estate - Buildings C & D - Solar w SGU - NSW,NSW,Solar,0.764,-33.873754,151.209587
+accredited,ACC_SRPYNSA6,Mayfield Aged Care - Solar - NSW,NSW,Solar,0.192,-32.810046,151.638577
+accredited,ACC_SRPYNS95,Westrac Tomago - Solar - NSW,NSW,Solar,1.663,-32.810046,151.638577
+accredited,ACC_SRPYNS63,Wollar Solar Farm-Solar-NSW,NSW,Solar,346.248,-32.358112,149.948366
+accredited,ACC_SRPXQLI9,NEUMANN STEEL 1 - Solar w SGU - QLD,QLD,Solar,1.517,-28.146770,153.467876
+accredited,ACC_SRPYNSA8,St Gregory's College Hall - Solar - NSW,NSW,Solar,0.199,-33.964733,150.799384
+accredited,ACC_BEBGNS39,St Marys Sewage Treatment - Cogeneration Plant - NSW,NSW,Sewage Gas and Biomass-Based Components of Sewage,1.7,-33.809587,151.026244
+accredited,ACC_SRPYNSA7,Wentworthville Leagues Club Ltd - Solar w SGU - NSW,NSW,Solar,0.23,-33.873754,151.209587
+accredited,ACC_SRPYNSB1,Wentworthville Leagues Club Ltd System 2 - Solar w SGU - NSW,NSW,Solar,0.23,-33.873754,151.209587
+accredited,ACC_BEBGWA14,Westpork (Moora) - Agricultural Waste - WA,WA,Agricultural Waste,0.63,-31.950652,115.797876
+accredited,ACC_SRPXQLJ0,Across The Waves Sports Club Bundaberg - Solar - QLD,QLD,Solar,0.45,-24.851297,152.326181
+accredited,ACC_SRPXQLJ3,HomeCo Toowoomba - Solar - QLD,QLD,Solar,0.14,-27.410442,151.654836
+accredited,ACC_SRPXQLJ5,HomeCo Upper Coomera - Solar - QLD,QLD,Solar,0.23,-27.998862,153.394099
+accredited,ACC_SRPXVCR1,PLASTIC SOLUTIONS - Solar w SGU - VIC,VIC,Solar,0.359,-37.900568,145.217848
+accredited,ACC_WD00QL09,Clarke Creek Wind Farm - Wind - QLD,QLD,Wind,450.0,-26.636290,151.270943
+accredited,ACC_SRPXQLJ1,Big Dog Pet Foods - SOLAR- QLD,QLD,Solar,0.662,-27.372084,152.985031
+accredited,ACC_SRPXQLI4,Doomadgee Solar Farm Stage 2 - Solar - QLD,QLD,Solar,0.304,-17.936560,138.822799
+accredited,ACC_SRPXVCP6,MOKOAN SOLAR FARM - SOLAR - VIC,VIC,Solar,57.803,-37.571336,144.890577
+accredited,ACC_SRPXQLJ7,Plainland - Solar w SGU - QLD,QLD,Solar,0.428,-27.540783,152.463544
+accredited,ACC_SRPXQLJ6,Homeco Tingalpa - Solar - QLD,QLD,Solar,0.204,-27.508712,153.070962
+accredited,ACC_SRPVSAZ6,Tip Top Dry Creek- Solar - SA,SA,Solar,0.918,-34.847347,138.548115
+accredited,ACC_SRPXSA02,Woolworths Kingston 7003 - Solar - TAS,TAS,Solar,0.338,-31.556484,147.086076
+accredited,ACC_SRPXQLK0,Americold Hemmant 2 - Solar w SGU - QLD,QLD,Solar,0.311,-27.541981,153.079185
+accredited,ACC_SRPXQLI5,Brisbane Lions - Solar - QLD,QLD,Solar,0.799,-27.507006,153.068285
+accredited,ACC_SRPXQLK1,Cairns Aquarium - SOLAR - QLD,QLD,Solar,0.4,-17.259200,145.473229
+accredited,ACC_SRPYNSB3,Clean Peak Energy - Coles Dubbo Square - Solar - NSW,NSW,Solar,0.37,-28.523500,151.976200
+accredited,ACC_SRPVAC44,CSIRO - Solar - ACT,ACT,Solar,1.269,-35.396937,149.065612
+accredited,ACC_SRPXVCR4,HomeCo Keysborough - Solar w SGU - VIC,VIC,Solar,0.152,-37.992363,145.145860
+accredited,ACC_SRPYNSA9,The Big Banana Coffs Harbour - Solar w SGU - NSW,NSW,Solar,0.127,-28.523500,151.976200
+accredited,ACC_SRPYNSC1,Uniting Farmborough - Solar w SGU - NSW,NSW,Solar,0.15,-33.873754,151.209587
+accredited,ACC_SRPYNSB2,Synnex Australia - Solar w SGU - NSW,NSW,Solar,0.474,-33.873754,151.209587
+accredited,ACC_SRPXQLI6,Associated Grains Dalby - Solar w SGU - QLD,QLD,Solar,0.348,-27.187645,151.267820
+accredited,ACC_SRPYNSA1,Clean Peak Energy - Moama - Solar - NSW,NSW,Solar,7.528,-28.523500,151.976200
+accredited,ACC_SRPYNSA5,Kootingal Solar Farm - Solar - NSW,NSW,Solar,6.048,-31.556484,147.086076
+accredited,ACC_SRPXQLI0,IBIS-solar w SGU-QLD,QLD,Solar,0.151,-27.320640,153.068723
+accredited,ACC_SRPXVCR0,Puopolo Smallgoods-Solar-VIC,VIC,Solar,0.309,-37.840095,144.691109
+accredited,ACC_SRPXQLK5,Alsco Salisbury - Solar w SGU - QLD,QLD,Solar,0.3,-27.541981,153.079185
+accredited,ACC_SRPYNSC5,Bunnings Penrith - Solar - NSW,NSW,Solar,0.37,-33.959374,150.798835
+accredited,ACC_SRPXVCR2,Cherry Lane - Solar - VIC,VIC,Solar,0.42,-37.840095,144.691109
+accredited,ACC_SRPXVCR7,Coolaroo - Solar - VIC,VIC,Solar,0.7,-37.571336,144.890577
+accredited,ACC_SRPYNSB7,"CVAS, Clarenza - Solar w SGU - NSW",NSW,Solar,0.194,-33.509807,151.160259
+accredited,ACC_SRPVWAN5,DMK - 27 Alacrity Place -  SOLAR - WA,WA,Solar,0.196,-33.992275,114.994560
+accredited,ACC_SRPYNSC2,Macathur Square - Solar - NSW,NSW,Solar,4.542,-33.964733,150.799384
+accredited,ACC_SRPYNSB5,Powerhouse Museum - Solar - NSW,NSW,Solar,0.801,-33.755819,150.957993
+accredited,ACC_SRPVWAL5,Region Group Kwinana 1 - Solar - WA,WA,Solar,1.191,-32.003943,115.544708
+accredited,ACC_SRPYNS98,Riverwood CCP - Solar - NSW,NSW,Solar,0.126,-33.755819,150.957993
+accredited,ACC_SRPYNSD2,Sydney City Toyota Waterloo - Solar - NSW,NSW,Solar,0.454,-33.894567,151.199513
+accredited,ACC_SRPXVCQ7,Timberjack 10 International Square - Solar - VIC,VIC,Solar,0.236,-37.571336,144.890577
+accredited,ACC_SRPXVCQ8,Timberjack 11 International Square - Solar - VIC,VIC,Solar,0.173,-37.571336,144.890577
+accredited,ACC_SRPXVCQ6,Timberjack Bliss Court Derrimut - Solar - VIC,VIC,Solar,0.62,-37.840095,144.691109
+accredited,ACC_SRPXVCR3,Uppal Produce - Solar w SGU - VIC,VIC,Solar,0.15,-36.250736,144.944329
+accredited,ACC_SRPXQLH9,Koorelah Farms-Solar-QLD,QLD,Solar,0.406,-27.410442,151.654836
+accredited,ACC_SRPYNSC9,Woolworths Norwest Circa 1422 - Solar - NSW,NSW,Solar,0.3,-33.755819,150.957993
+accredited,ACC_SRPVWAN9,Ashburton Aboriginal Corporation - Solar - WA,WA,Solar,0.727,-28.903938,115.111522
+accredited,ACC_SRPXVCS0,Bunnings Nunawading - Solar - VIC,VIC,Solar,0.26,-37.806777,145.181273
+accredited,ACC_BEBGNS40,Eastern Creek - LFG- NSW,NSW,Landfill Gas,4.268,-33.805942,150.849956
+accredited,ACC_SRPYNSC0,Gunnedah 2A Solar Farm - Solar - NSW,NSW,Solar,6.048,-30.979958,150.235831
+accredited,ACC_SRPXQLK3,Hemmant 1+3 Lineage Logistics - Solar - QLD,QLD,Solar,1.518,-27.508712,153.070962
+accredited,ACC_SRPYNSD4,Raymond Terrace - Solar - NSW,NSW,Solar,0.222,-31.556484,147.086076
+accredited,ACC_SRPYNSC8,Scalabrini Griffith - Solar w SGU - NSW,NSW,Solar,0.22,-34.300549,146.076830
+accredited,ACC_WD00QL10,Wambo Wind Farm Stage 1 - Wind - QLD,QLD,Wind,252.0,-27.180532,151.264133
+accredited,ACC_SRPYNSD3,Woolworths Merimbula 1250 - Solar - NSW,NSW,Solar,0.366,-31.556484,147.086076
+accredited,ACC_SRPXSA04,SH LEASEHOLD PTY LTD - Solar w SGU - SA,SA,Solar,0.198,-34.920631,138.603969
+accredited,ACC_SRPYNS87,GPE_DB Santasalo - Solar w SGU - NSW,NSW,Solar,0.532,-33.873754,151.209587
+accredited,ACC_BEBMWA04,Kwinana WTE - WA,WA,Biomass-Based Components of Municipal Solid Waste,42.0,-31.950652,115.797876
+accredited,ACC_SRPYNSB4,Murrumbidgee-Solar-NSW,NSW,Solar,7.125,-33.883697,151.041879
+accredited,ACC_SRPYNSD5,PCCS - Solar w SGU - NSW,NSW,Solar,0.18,-33.883697,151.041879
+accredited,ACC_SRPVWAO0,Region Group Kwinana 2 - Solar - WA,WA,Solar,1.19,-32.003943,115.544708
+accredited,ACC_SRPXVCS6,Bunnings Mentone - Solar - VIC,VIC,Solar,0.18,-37.976803,145.069610
+accredited,ACC_SRPYNSF1,Equinex SY9 - Solar - NSW,NSW,Solar,0.49,-33.873754,151.209587
+accredited,ACC_SRPXVCS4,HomeCo Braybrook - Solar - VIC,VIC,Solar,0.14,-37.778433,144.850960
+accredited,ACC_SRPXQLK7,HomeCo Bundall - Solar - QLD,QLD,Solar,0.33,-28.005511,153.412483
+accredited,ACC_SRPXQLL0,Bunnings Lawnton - Solar - QLD,QLD,Solar,0.16,-27.287964,152.985367
+accredited,ACC_SRPXQLJ8,Omya Bajool - 546kW - Solar W SGU - QLD,QLD,Solar,0.546,-23.380820,150.514865
+accredited,ACC_SRPYNSD7,Bunnings Alexandria - Solar - NSW,NSW,Solar,0.456,-33.905434,151.193565
+accredited,ACC_SRPYNSD1,"Chisholm Rd, Auburn - Solar w SGU - NSW",NSW,Solar,0.207,-33.873754,151.209587
+accredited,ACC_SRPXQLK9,Hillwood Berries - SOLAR - QLD,QLD,Solar,0.268,-24.865136,152.377896
+accredited,ACC_SRPXVCS9,Bunnings Hoppers Crossing - Solar - VIC,VIC,Solar,0.18,-37.875260,144.713309
+accredited,ACC_SRPYNSC7,Energy Bay - Leppington BP - WH2- Solar- NSW,NSW,Solar,0.439,-33.873754,151.209587
+accredited,ACC_SRPXVCT1,GPE SURYA ENTERPRISES GOLD COAST - Solar w SGU - VIC,VIC,Solar,0.199,-37.868873,145.212634
+accredited,ACC_SRPXVCH2,Greentech 7 Solar Farm & BESS - Solar - VIC,VIC,Solar,8.507,-37.571336,144.890577
+accredited,ACC_SRPXVCR9,Minter Magic Packing Shed Iraak - Solar w SGU - VIC,VIC,Solar,0.2,-34.455620,142.148718
+accredited,ACC_SRPYNSF4,Seventh-Day Adventist Aged Care Greater Sydney Ltd - Solar w SGU - NSW,NSW,Solar,0.154,-33.873754,151.209587
+accredited,ACC_SRPVWAO4,Treeby Parklands Care Community - Solar w SGU - WA,WA,Solar,0.23,-31.950652,115.797876
+accredited,ACC_SRPXVCT0,Western Port Bay Care Community - Solar w SGU - VIC,VIC,Solar,0.2,-37.754520,144.980727
+accredited,ACC_SRPXVCS8,Bunnings Ballarat - Solar - VIC,VIC,Solar,0.18,-37.551652,143.852340
+accredited,ACC_SRPYNSD9,Goodman AU702 Axle West - Solar w SGU - NSW,NSW,Solar,0.655,-33.873754,151.209587
+accredited,ACC_SRPVWAO5,SOC Osborne Park - Solar - WA,WA,Solar,0.3,-31.976429,115.919672
+accredited,ACC_SRPYNS49,Temora 1C Solar Farm - Solar - NSW,NSW,Solar,6.121,-28.523500,151.976200
+accredited,ACC_SRPXQLL6,Harvey Norman Maroochydore Homemaker - Solar w SGU - QLD,QLD,Solar,0.454,-26.833924,152.965066
+accredited,ACC_SRPVTA27,Spreyton - Solar - TAS,TAS,Solar,0.174,-41.221802,146.347331
+accredited,ACC_SRPYNSA2,AU254 M7 BH - Solar - NSW,NSW,Solar,0.438,-33.873754,151.209587
+accredited,ACC_SRPXQLL2,House Power North Maroochydore Homemaker - Solar w SGU - QLD,QLD,Solar,0.203,-26.833924,152.965066
+accredited,ACC_SRPXQLL3,House Power South Maroochydore Homemaker - Solar w SGU - QLD,QLD,Solar,0.187,-26.833924,152.965066
+accredited,ACC_SRPYNS80,Culcairn Solar Farm - Solar - NSW,NSW,Solar,439.869,-35.667408,147.036547
+accredited,ACC_SRPXQLL5,Domayne Maroochydore Homemaker - Solar w SGU - QLD,QLD,Solar,0.203,-26.833924,152.965066
+accredited,ACC_SRPXVCS2,GRAC - Solar w SGU - VIC,VIC,Solar,0.305,-37.420180,143.908406
+accredited,ACC_SRPXVCR8,Greenlink 6 - Solar - VIC,VIC,Solar,0.439,-37.754520,144.980727
+accredited,ACC_SRPXVCR5,HomeCo Hawthorn East - Solar - VIC,VIC,Solar,0.2,-37.806777,145.181273
+accredited,ACC_SRPXQLL4,Joyce Mayne Maroochydore Homemaker - Solar w SGU - QLD,QLD,Solar,0.187,-26.833924,152.965066
+accredited,ACC_SRPVSAZ9,Morgan Sawmill Dublin - Solar - SA,SA,Solar,0.705,-34.609765,138.743423
+accredited,ACC_SRPXVCS5,Nhill Renewable Energy Facility - Solar - VIC,VIC,Solar,6.512,-37.571336,144.890577
+accredited,ACC_SRPYNSF5,Woolworths Eagle Vale 1091 - Solar - NSW,NSW,Solar,0.338,-33.873754,151.209587
+accredited,ACC_SRPXSA06,Greenacres Joint Venture - Solar w SGU - SA,SA,Solar,0.245,-34.920631,138.603969
+accredited,ACC_SRPYNSC3,Moorebank - Solar - NSW,NSW,Solar,1.731,-33.933263,150.949686
+accredited,ACC_SRPYNSF3,Redmud Green Energy 197 Pty Ltd - Solar - NSW,NSW,Solar,6.519,-31.556484,147.086076
+accredited,ACC_SRPYNSE0,Stanhope Leisure Centre - SOLAR w SGU - NSW,NSW,Solar,0.35,-33.873754,151.209587
+accredited,ACC_SRPVTA26,UA Mornington - Solar - TAS,TAS,Solar,0.21,-31.556484,147.086076
+accredited,ACC_SRPXVCT3,Harvey Norman Warragul - Solar w SGU - VIC,VIC,Solar,0.336,-38.166303,145.952003
+accredited,ACC_SRPYNSD8,Goodman AU079 Greystanes Laminex - Solar w SGU - NSW,NSW,Solar,0.4,-33.873754,151.209587
+accredited,ACC_SRPXQLL1,DW Coomera - Solar wSGU - QLD,QLD,Solar,0.709,-27.541981,153.079185
+accredited,ACC_SRPYNSF7,Team Medical Supplies - Solar w SGU - NSW,NSW,Solar,0.207,-33.873754,151.209587
+accredited,ACC_SRPXQLM0,Americold Hemmant 3 - Solar w SGU - QLD,QLD,Solar,0.524,-27.541981,153.079185
+accredited,ACC_SRPXQLL7,Brothers Sports Club - Solar  - QLD,QLD,Solar,0.292,-24.865136,152.377896
+accredited,ACC_SRPYNS96,Dungog WTP - Solar - NSW,NSW,Solar,0.301,-33.883697,151.041879
+accredited,ACC_SRPYNSB9,Wollongong WRRF - Solar - NSW,NSW,Solar,0.246,-33.873754,151.209587
+accredited,ACC_SRPYNSF6,Canally Microgrid - Solar - NSW,NSW,Solar,6.567,-28.523500,151.976200
+accredited,ACC_SRPYNSE4,Coffs Harbour Grange Care Community - Solar w SGU - NSW,NSW,Solar,0.189,-28.523500,151.976200
+accredited,ACC_SRPXSA03,Munno Para Foodland - Solar w SGU - SA,SA,Solar,1.18,-34.920631,138.603969
+accredited,ACC_SRPYNSD6,Tronox-Solar-NSW,NSW,Solar,10.713,-28.523500,151.976200
+accredited,ACC_SRPYNSB8,Elements of Byron - Solar wSGU - NSW,NSW,Solar,0.837,-28.523500,151.976200
+accredited,ACC_SRPXQLL8,FABCOT Chermside - Solar - QLD,QLD,Solar,0.254,-27.541981,153.079185
+accredited,ACC_SRPXVCQ9,Altona Inlet Pump Station - SOLAR - VIC,VIC,Solar,0.226,-37.840095,144.691109
+accredited,ACC_SRPXVCS3,Bunnings Keysborough - Solar - VIC,VIC,Solar,0.2,-37.989982,145.147000
+accredited,ACC_SRPXQLM4,Ignatius Park College - SOLAR w SGU - QLD,QLD,Solar,0.29,-19.277873,146.758774
+accredited,ACC_SRPXVCT9,Ambassador Industrial Pty Ltd - Solar w SGU - VIC,VIC,Solar,0.257,-37.754520,144.980727
+accredited,ACC_SRPXVCT4,Dexus Dulux Dandenong - Solar - VIC,VIC,Solar,0.226,-37.882127,145.184951
+accredited,ACC_SRPXQLM3,Harbourside Townsville - Solar w SGU - QLD,QLD,Solar,0.779,-19.243668,146.793055
+accredited,ACC_SRPXQLM2,KQF Newheath Dr - Solar w SGU - QLD,QLD,Solar,0.536,-27.832586,153.290556
+accredited,ACC_SRPXVCT7,Liuzzi 25 Eton St - Solar - VIC,VIC,Solar,0.275,-37.571336,144.890577
+accredited,ACC_SRPXVCT8,Liuzzi 71 Gower St - Solar - VIC,VIC,Solar,0.4,-37.571336,144.890577
+accredited,ACC_SRPXQLM5,Mercy Community - Solar w SGU - QLD,QLD,Solar,0.853,-32.904736,151.585613
+accredited,ACC_SRPXVCP9,Norther Airfield - Solar - VIC,VIC,Solar,11.278,-37.571336,144.890577
+accredited,ACC_SRPVWAN8,Rose Farms - Solar wSGU- WA,WA,Solar,0.2,-35.390082,147.148803
+accredited,ACC_SRPYNSE3,Suprima Bakeries Pty Ltd - Solar - NSW,NSW,Solar,0.751,-33.873754,151.209587
+committed,COM_MANGALORE_RENEWABLE_ENERGY_PROJECT,Mangalore Renewable Energy Project,VIC,Solar,5.0,-36.924626,145.170831
+committed,COM_ORANGE_COMMUNITY_RENEWABLE_ENERGY_PARK,Orange Community Renewable Energy Park,NSW,Solar,5.0,-33.912877,150.914686
+committed,COM_MOOREBANK_LOGISTICS_PARK,Moorebank Logistics Park,NSW,Solar,60.0,-33.954834,150.929104
+committed,COM_WANGARATTA_SOLAR_FARM,Wangaratta Solar Farm,VIC,Solar,40.0,-36.356434,146.322831
+committed,COM_KIDSTON_PUMPED_HYDRO_STORAGE_PROJECT,Kidston Pumped Hydro Storage Project,QLD,Hydro,250.0,-18.871726,144.155079
+committed,COM_NEW_ENGLAND_SOLAR_FARM_STAGE_2,New England Solar Farm - Stage 2,NSW,Solar,320.0,-30.595492,152.469719
+committed,COM_BELLEVUE_GOLD_HYBRID_POWER_STATION_WIND,Bellevue Gold Hybrid Power Station (Wind),WA,Wind,24.0,-27.952432,153.397494
+committed,COM_GLENELLEN_SOLAR_PROJECT,Glenellen solar project,NSW,Solar,200.0,-35.915000,146.917778
+committed,COM_FOREST_GLEN_SOLAR_FARM,Forest Glen Solar Farm,NSW,Solar,90.0,-33.548333,151.017778
+committed,COM_UUNGULA_WIND_FARM,Uungula Wind Farm,NSW,Wind,414.0,-32.545040,149.197006
+committed,COM_MUNNA_CREEK_SOLAR_FARM,Munna Creek Solar Farm,QLD,Solar,150.0,-25.881987,152.450977
+committed,COM_ST_IVES_GOLD_SOLAR_FARM,St Ives Gold Solar Farm,WA,Wind,77.0,-31.406886,121.827423
+committed,COM_GUNSYND_SOLAR_FARM,Gunsynd Solar Farm,QLD,Solar,94.0,-28.097900,153.366225
+committed,COM_ALDOGA_SOLAR_FARM,Aldoga Solar Farm,QLD,Solar,380.0,-23.844797,151.073981
+committed,COM_QUORN_PARK_SOLAR_HYBRID,Quorn Park Solar Hybrid,NSW,Solar,98.0,-33.080964,148.092203
+committed,COM_GOLDEN_PLAINS_WIND_FARM_STAGE_2,Golden Plains Wind Farm - Stage 2,VIC,Wind,574.0,-37.852439,143.839073
+committed,COM_LOTUS_CREEK_WIND_FARM,Lotus Creek Wind Farm,QLD,Wind,285.0,-22.271669,149.088745
+committed,COM_GOORAMBAT_SOLAR_FARM,Goorambat Solar Farm,VIC,Solar,250.0,-36.414167,145.953184
+committed,COM_HAY_SOLAR_FARM,Hay Solar Farm,NSW,Solar,7.5,-34.157300,144.890393
+committed,COM_BROADSOUND_SOLAR_FARM,Broadsound Solar Farm,QLD,Solar,376.0,-21.189131,149.150264
+committed,COM_BOULDER_CREEK_WIND_FARM,Boulder Creek Wind Farm,QLD,Wind,228.0,-23.671018,150.313410
+committed,COM_HORSHAM_SOLAR_FARM,Horsham Solar Farm,VIC,Solar,118.8,-36.714810,142.201810
+committed,COM_CARWARP_ENERGY_PARK,Carwarp Energy Park,VIC,Solar,171.0,-34.457111,142.197283
+committed,COM_GOULBURN_RIVER_SOLAR_FARM,Goulburn River Solar Farm,NSW,Solar,450.0,-32.325326,150.175379
+committed,COM_WAMBO_WIND_FARM_STAGE_2,Wambo Wind Farm Stage 2,QLD,Wind,254.0,-26.636290,151.270943
+committed,COM_BUNGAMA_SOLAR_FARM_STAGE_3,Bungama Solar Farm (stage 3),SA,Solar,280.0,-33.197958,138.068002
+committed,COM_FULHAM_SOLAR_FARM,Fulham Solar Farm,VIC,Solar,80.0,-38.082623,146.963477
+committed,COM_CLOUDBREAK_SOLAR_FARM,Cloudbreak Solar Farm,WA,Solar,190.0,-22.304542,119.432089
+committed,COM_PORT_LATTA_WIND_FARM,Port Latta Wind Farm,TAS,Wind,25.0,-40.851772,145.381874
+committed,COM_WANDOAN_SOUTH_SOLAR_FARM_STAGE_2,Wandoan South Solar Farm (Stage 2),QLD,Solar,240.0,-26.256824,149.775686
+committed,COM_LANCASTER_SOLAR_FARM,Lancaster Solar Farm,VIC,Solar,106.0,-36.298938,145.136072
+committed,COM_MULWALA_SOLAR_FARM,Mulwala Solar Farm,NSW,Solar,31.0,-35.986915,146.002679
+probable,PRO_BARNAWARTHA_SOLAR_FARM,Barnawartha Solar Farm,VIC,Solar,64.0,-36.105401,146.673572
+probable,PRO_BARWON_SOLAR_FARM,Barwon solar farm,VIC,Solar,250.0,-38.209055,143.994396
+probable,PRO_BULLYARD_SOLAR_FARM,Bullyard Solar Farm,QLD,Solar,100.0,-24.951463,152.047653
+probable,PRO_BUNGABAN_WIND_FARM,Bungaban Wind Farm,QLD,Wind,1400.0,-25.923731,150.153065
+probable,PRO_BYFORD_SOLAR_PROJECT,Byford Solar Project,WA,Solar,30.0,-32.216006,116.014670
+probable,PRO_CAMPBELLS_FOREST_SOLAR_FARM,Campbells Forest Solar Farm,VIC,Solar,205.0,-36.614642,144.120067
+probable,PRO_COPPABELLA_WIND_FARM,Coppabella Wind Farm,NSW,Wind,284.0,-35.731667,147.717778
+probable,PRO_DERBY_SOLAR_FARM_BATTERY,Derby Solar Farm & Battery,VIC,Solar,95.0,-36.658111,144.014323
+probable,PRO_ELAINE_SOLAR_FARM,Elaine Solar Farm,VIC,Solar,125.0,-37.761595,144.006283
+probable,PRO_EURIMBULA_SOLAR_FARM,Eurimbula Solar Farm,QLD,Solar,696.0,-24.119515,151.748116
+probable,PRO_FRASERS_SOLAR_FARM,Frasers Solar Farm,VIC,Solar,77.0,-39.080906,146.362401
+probable,PRO_GLANMIRE_SOLAR_FARM,Glanmire Solar Farm,NSW,Solar,60.0,-33.415000,149.701111
+probable,PRO_HOPELAND_SOLAR_FARM,Hopeland Solar Farm,QLD,Solar,250.0,-26.872868,150.661002
+probable,PRO_JUNCTION_RIVERS_WIND_FARM,Junction Rivers Wind Farm,NSW,Wind,585.0,-30.792431,152.025583
+probable,PRO_KIAMAL_SOLAR_FARM_STAGE_2,Kiamal Solar Farm - Stage 2,VIC,Solar,150.0,-34.995634,142.315755
+probable,PRO_LAKE_WELLS_HIGH_RENEWABLE_ENERGY_FRACTION_MICROGRID_SOLAR,Lake Wells high renewable energy fraction microgrid -Solar,WA,Solar,4.5,-28.903938,115.111522
+probable,PRO_LAKE_WELLS_HIGH_RENEWABLE_ENERGY_FRACTION_MICROGRID_WIND,Lake Wells high renewable energy fraction microgrid -Wind,WA,Wind,9.0,-32.096855,115.838101
+probable,PRO_LAKELAND_WIND_FARM,Lakeland Wind Farm,QLD,Wind,100.0,-15.894241,144.867145
+probable,PRO_MAJORS_CREEK_SOLAR_FARM,Majors Creek Solar Farm,QLD,Solar,150.0,-19.643511,147.016417
+probable,PRO_MANILLA_COMMUNITY_SOLAR,Manilla Community Solar,NSW,Solar,4.5,-30.745575,150.732085
+probable,PRO_MOUNT_HOPEFUL_WIND_FARM,Mount Hopeful Wind Farm,QLD,Wind,350.0,-23.730000,150.533889
+probable,PRO_NORTHERN_MIDLANDS_SOLAR_FARM,Northern Midlands Solar Farm,TAS,Solar,288.0,-41.879863,147.436284
+probable,PRO_PALMER_WIND_FARM,Palmer Wind Farm,SA,Wind,288.0,-34.852798,139.160062
+probable,PRO_PLANET_ARK_POWER_SCHNEIDER_ELECTRICITY_PV_AND_BATTERY_PROJECT,Planet Ark Power - Schneider Electricity PV and Battery Project,SA,Solar,5.7,-27.423409,152.993143
+probable,PRO_SANDY_CREEK_SOLAR_FARM,Sandy Creek Solar Farm,NSW,Solar,700.0,-31.823200,150.980100
+probable,PRO_SAPPHIRE_SOLAR_FARM,Sapphire Solar Farm,NSW,Solar,200.0,-30.231667,153.151111
+probable,PRO_SILVERLEAF_SOLAR_FARM,Silverleaf Solar Farm,NSW,Solar,120.0,-33.705495,150.904298
+probable,PRO_SNOWTOWN_NORTH_SOLAR_FARM,Snowtown North Solar Farm,SA,Solar,44.0,-33.747145,138.210079
+probable,PRO_SPICERS_CREEK_WIND_FARM,Spicers Creek Wind Farm,NSW,Wind,700.0,-32.390200,149.151200
+probable,PRO_THEODORE_WIND_FARM,Theodore Wind Farm,QLD,Wind,1152.0,-24.946086,150.077365
+probable,PRO_VALES_POINT_SOLAR_FARM,Vales Point Solar Farm,NSW,Solar,62.0,-33.143221,151.535718
+probable,PRO_VALLEY_OF_THE_WINDS,Valley of the Winds,NSW,Wind,936.0,-25.284990,130.726459
+probable,PRO_VAST_SOLAR_FACILITY_VS1,Vast Solar Facility - VS1,SA,Solar,30.0,-42.885751,147.329645
+probable,PRO_WALGETT_SOLAR_FARM,Walgett Solar Farm,NSW,Solar,25.0,-29.788266,148.238987
+probable,PRO_WINTON_NORTH_SOLAR_FARM,Winton North Solar Farm,VIC,Solar,100.0,-36.455680,146.092850
+probable,PRO_WOOLSTHORPE_WIND_FARM,Woolsthorpe Wind Farm,VIC,Wind,70.0,-38.185649,142.431425
