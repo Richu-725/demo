@@ -1,3 +1,2 @@
 resource_id,cache_path,retrieved_at,bytes,md5,status
-NEM:202410010000_202410080000,C:\Users\ring_\Desktop\tmp\C5339A2\demo\data\cache\nem_202410010000_202410080000.parquet,2025-11-02T10:59:14.821411,32680,9f279f50f126b867c95c2a436a31bf7b,unchanged
-NEM:202410010000_202410010015,data\cache\nem_202410010000_202410010015.parquet,2025-11-04T06:46:32.041366,6286,0b985fd448b168fdfcc964a18c07dc60,updated
+NEM:metrics,data/cache/nem_metrics.csv,2025-11-07T14:29:29.803324,23218,b09ec3ffba4f7d5af1425eafbe67f764,updated

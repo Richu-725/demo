@@ -24,26 +24,25 @@ Environment setup
    mkdir -p data/cache data/tmp
    ```
 
-Required environment variables
-------------------------------
-Set these before running build/stream/loop/front-end commands:
+Configuration (no environment variables needed)
+-----------------------------------------------
+All required settings live inside the code so the assignment can be run without
+exporting environment variables:
 
-- ``OE_API_KEY`` **(or ``A2_API_KEY``)** – OpenElectricity bearer token.
-- ``A2_START`` / ``A2_END`` (ISO, timezone-naive) – initial backfill window.
-  ``A2_START`` must be provided the very first time the CSV cache is created.
-- Optional overrides with sane defaults:
-  - ``A2_INTERVAL=5m``
-  - ``A2_LOOP_DELAY=60`` (minimum enforced)
-  - ``A2_REQUEST_BUDGET=450``
-  - ``MQTT_HOST=localhost`` / ``MQTT_PORT=1883`` / ``MQTT_KEEPALIVE=60``
-  - ``FRONTEND_CACHE_DIR=data/cache`` / ``FRONTEND_REFRESH_SEC=5``
+- ``a2_backend.py`` defines ``DEFAULT_API_KEY``, ``DEFAULT_START`` (2025‑10‑01),
+  ``DEFAULT_END`` (one week later), cache paths, MQTT host/port, etc.
+- ``a2_frontend.py`` defaults to ``test.mosquitto.org:1883`` and
+  ``data/cache`` for seeding.
+
+To change any value, either modify the constants near the top of the respective
+file or supply CLI overrides (e.g., ``--start``, ``--end``, ``--network``,
+``--loop-delay``). No environment variables are read anywhere in the code.
 
 Running the backend
 -------------------
 ```bash
-# Build / extend the CSV cache for a specific window
-env OE_API_KEY=... A2_START="2025-10-01T00:00:00" A2_END="2025-10-08T00:00:00" \
-  python a2_backend.py --mode build --network NEM --window-hours 24
+# Build / extend the CSV cache for a specific window (defaults cover 2025-10-01 → 2025-10-08)
+python a2_backend.py --mode build --network NEM --window-hours 24
 
 # Publish only the rows that have not been seen before (uses publish_offsets.json)
 python a2_backend.py --mode stream
@@ -76,9 +75,9 @@ Verifying MQTT publishing
 -------------------------
 1. Start ``python a2_backend.py --mode stream`` (or ``--mode loop``).
 2. Subscribe to the topics (example uses mosquitto-tools):
-   ```bash
-   mosquitto_sub -h "$MQTT_HOST" -p "$MQTT_PORT" -t 'nem/#' -v
-   ```
+```bash
+mosquitto_sub -h "localhost" -p "1883" -t 'nem/#' -v
+```
    Messages appear in event-time order with ≥0.1 s spacing and include
    ``facility_id``, ``ts_event``, ``power_mw``, and ``co2_t``.
 
@@ -87,17 +86,17 @@ Running the frontend (Task 4)
 ```bash
 streamlit run a2_frontend.py
 ```
-The dashboard loads the CSV seed from ``FRONTEND_CACHE_DIR`` and then listens to
-``MQTT_TOPIC`` (default ``nem/+/+/#``). Use the sidebar to filter by fuel or
+The dashboard loads the CSV seed from ``data/cache`` (override via CLI) and then
+listens to ``nem/+/+/#`` by default. Use the sidebar to filter by fuel or
 network region, reload the cache, or toggle auto-refresh.
 
 Troubleshooting
 ---------------
-- "Missing OE_API_KEY" – export the key alongside ``A2_START``/``A2_END``.
 - "CSV cache not found" – run build mode once before streaming/frontend.
 - "No new rows after watermark" – delete ``publish_offsets.json`` if you need
   to replay historic data.
-- MQTT connection errors – verify host/port credentials and firewall rules.
+- MQTT connection errors – verify the broker defined inside ``a2_backend.py`` /
+  ``a2_frontend.py`` (or override via CLI) and ensure the firewall allows access.
 
 Evidence checklist
 ------------------

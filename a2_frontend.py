@@ -7,15 +7,9 @@ summary panels. Run with:
 
     streamlit run a2_frontend.py
 
-Environment variables:
-    MQTT_HOST / MQTT_PORT   - broker connection (default test.mosquitto.org:1883)
-    MQTT_TOPIC              - topic filter (default nem/+/+/#)
-    FRONTEND_CACHE_DIR      - directory containing backend CSV caches
-    FRONTEND_REFRESH_SEC    - auto-refresh interval (default 5 seconds)
-
 Flow overview
 -------------
-1. Resolve ``FrontendSettings`` from the environment and seed state from the latest backend CSV cache.
+1. Resolve ``FrontendSettings`` from built-in defaults and seed state from the latest backend CSV cache.
 2. Spawn an ``MQTTSubscriber`` thread that listens for live metric events and buffers them in a thread-safe queue.
 3. On each Streamlit rerun, drain the queue, merge new events into ``current``/``history`` tables, and update the session state.
 4. Render map, summary panels, and recent events table; optionally auto-trigger a rerun after ``refresh_interval_s`` seconds.
@@ -25,7 +19,6 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import threading
 import time
 from dataclasses import dataclass, field
@@ -67,16 +60,9 @@ class FrontendSettings:
     )
 
     @staticmethod
-    def from_env() -> "FrontendSettings":
-        """Construct settings using environment overrides when present."""
-        env = os.environ
-        return FrontendSettings(
-            mqtt_host=env.get("MQTT_HOST", "test.mosquitto.org"),
-            mqtt_port=int(env.get("MQTT_PORT", "1883")),
-            mqtt_topic=env.get("MQTT_TOPIC", "nem/+/+/#"),
-            cache_dir=Path(env.get("FRONTEND_CACHE_DIR", "data/cache")),
-            refresh_interval_s=float(env.get("FRONTEND_REFRESH_SEC", "5")),
-        )
+    def default() -> "FrontendSettings":
+        """Return assignment defaults without depending on environment variables."""
+        return FrontendSettings()
 
 
 def _make_mqtt_client() -> mqtt.Client:
@@ -435,7 +421,7 @@ def run_app() -> None:
         4. Merge queued events into the current/history tables, render the map + summary widgets, and schedule reruns
            while auto-refresh is enabled.
     """
-    settings = FrontendSettings.from_env()
+    settings = FrontendSettings.default()
     st.set_page_config(page_title="COMP5339 A2 Dashboard", layout="wide")
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s [%(name)s] %(message)s")
