@@ -449,12 +449,7 @@ def render_dashboard() -> None:
 
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s [%(name)s] %(message)s")
-    try:
-        render_dashboard()
-    finally:
-        subscriber: Optional[MQTTSubscriber] = st.session_state.get("subscriber")  # type: ignore[attr-defined]
-        if subscriber:
-            subscriber.stop()
+    render_dashboard()
 
 
 if __name__ == "__main__":

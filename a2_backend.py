@@ -334,7 +334,7 @@ def publish_events(settings: Settings, cache_path: Path) -> None:
         logging.warning("Cache %s contains no rows; nothing to publish.", cache_path)
         return
 
-    client = mqtt.Client()
+    client = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.VERSION2)
     client.connect(settings.mqtt_host, settings.mqtt_port, keepalive=60)
     client.loop_start()
     try:
