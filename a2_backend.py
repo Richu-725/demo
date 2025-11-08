@@ -22,6 +22,14 @@ Typical usage (from the repo root):
 
 Each public function/docstring spells out the inputs/outputs so the frontend
 team can safely import and reuse pieces without triggering side effects.
+
+Broker requirement (shared with the frontend):
+    Install Mosquitto or any MQTT v3/v5 broker, start it on localhost:1883,
+    and keep it running while invoking stream/loop modes, e.g.:
+
+        & "C:\\Program Files\\mosquitto\\mosquitto.exe" -v
+
+    or start the Windows service via ``net start Mosquitto``.
 """
 
 from __future__ import annotations

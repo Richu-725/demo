@@ -3,18 +3,18 @@ COMP5339 Assignment 2 – Minimal Backend + Frontend
 
 Overview
 --------
-This repository satisfies the COMP5339 Assignment 2 brief:
+This repository satisfies the COMP5339 Assignment 2 brief:
 
-1. ``a2_backend.py`` fetches OpenElectricity facility metadata and metrics,
-   materialises a single CSV cache (``data/cache/{network}_metrics.csv``), and
-   publishes only NEW rows to MQTT in build/stream/loop modes.
-2. ``a2_frontend.py`` seeds from the CSV cache, subscribes to MQTT, and renders
-   the live dashboard required for Task 4.
-3. ``requirements.txt`` lists the minimal shared dependencies.
+1. `a2_backend.py` fetches OpenElectricity facility metadata and metrics,
+   writes a single CSV cache (`data/cache/{network}_metrics.csv`), and publishes
+   only NEW rows to MQTT in build/stream/loop modes.
+2. `a2_frontend.py` seeds from the CSV cache, subscribes to MQTT, and renders
+   the live dashboard required for Task 4.
+3. `requirements.txt` lists the minimal shared dependencies.
 
 Environment setup
 -----------------
-1. Use Python 3.10+ (``python --version`` should report ≥3.10).
+1. Use Python 3.10+ (`python --version` should report ≥3.10).
 2. Install dependencies once (venv or user site are both fine):
    ```bash
    python -m pip install -r requirements.txt
@@ -24,24 +24,33 @@ Environment setup
    mkdir -p data/cache data/tmp
    ```
 
-Configuration (no environment variables needed)
------------------------------------------------
-All required settings live inside the code so the assignment can be run without
-exporting environment variables:
+MQTT broker requirement
+-----------------------
+Both backend and frontend rely on an MQTT broker. The default host/port/topic
+are `localhost:1883` and `nem/events`. Install Mosquitto (or any MQTT v3/v5
+broker) and start it before running either script.
 
-- ``a2_backend.py`` defines ``DEFAULT_API_KEY``, ``DEFAULT_START`` (2025‑10‑01),
-  ``DEFAULT_END`` (one week later), cache paths, MQTT host/port, etc.
-- ``a2_frontend.py`` defaults to ``test.mosquitto.org:1883`` and
-  ``data/cache`` for seeding.
+Windows examples (Mosquitto installer places binaries in
+`C:\Program Files\mosquitto`):
 
-To change any value, either modify the constants near the top of the respective
-file or supply CLI overrides (e.g., ``--start``, ``--end``, ``--network``,
-``--loop-delay``). No environment variables are read anywhere in the code.
+```powershell
+# Foreground mode with verbose logs (Ctrl+C to stop)
+& "C:\Program Files\mosquitto\mosquitto.exe" -v
+
+# OR run as a Windows service in the background
+net start Mosquitto
+# later -> net stop Mosquitto
+```
+
+If you prefer Docker:
+```bash
+docker run --name mosquitto -p 1883:1883 eclipse-mosquitto
+```
 
 Running the backend
 -------------------
 ```bash
-# Build / extend the CSV cache for a specific window (defaults cover 2025-10-01 → 2025-10-08)
+# Build / extend the CSV cache for a specific window
 python a2_backend.py --mode build --network NEM --window-hours 24
 
 # Publish only the rows that have not been seen before (uses publish_offsets.json)
@@ -53,9 +62,9 @@ python a2_backend.py --mode loop --loop-delay 120
 
 Cache location, row counts, and covered timespan
 ------------------------------------------------
-- Metrics CSV: ``data/cache/{network}_metrics.csv`` (e.g. ``data/cache/nem_metrics.csv``)
-- Facilities metadata: ``data/cache/facilities.csv``
-- Publish watermark: ``data/cache/publish_offsets.json``
+- Metrics CSV: `data/cache/{network}_metrics.csv` (e.g. `data/cache/nem_metrics.csv`)
+- Facilities metadata: `data/cache/facilities.csv`
+- Publish watermark: `data/cache/publish_offsets.json`
 
 Check cache basics anytime:
 ```bash
@@ -73,30 +82,32 @@ PY
 
 Verifying MQTT publishing
 -------------------------
-1. Start ``python a2_backend.py --mode stream`` (or ``--mode loop``).
-2. Subscribe to the topics (example uses mosquitto-tools):
-```bash
-mosquitto_sub -h "localhost" -p "1883" -t 'nem/#' -v
-```
+1. Start `python a2_backend.py --mode stream` (or `--mode loop`).
+2. Subscribe to the topic (example uses mosquitto-tools):
+   ```bash
+   mosquitto_sub -h "localhost" -p "1883" -t 'nem/events' -v
+   ```
    Messages appear in event-time order with ≥0.1 s spacing and include
-   ``facility_id``, ``ts_event``, ``power_mw``, and ``co2_t``.
+   `facility_id`, `ts_event`, `power_mw`, and `emissions_t`.
 
-Running the frontend (Task 4)
+Running the frontend (Task 4)
 -----------------------------
 ```bash
 streamlit run a2_frontend.py
 ```
-The dashboard loads the CSV seed from ``data/cache`` (override via CLI) and then
-listens to ``nem/+/+/#`` by default. Use the sidebar to filter by fuel or
-network region, reload the cache, or toggle auto-refresh.
+The dashboard loads the CSV seed from `data/cache` (override via CLI) and then
+listens to `nem/events` by default. Use the sidebar to filter by fuel or
+network region, edit the MQTT host/port/topic, reload the cache, or toggle
+auto-refresh.
 
 Troubleshooting
 ---------------
-- "CSV cache not found" – run build mode once before streaming/frontend.
-- "No new rows after watermark" – delete ``publish_offsets.json`` if you need
-  to replay historic data.
-- MQTT connection errors – verify the broker defined inside ``a2_backend.py`` /
-  ``a2_frontend.py`` (or override via CLI) and ensure the firewall allows access.
+- “Cache not found” – run backend build mode once before streaming/frontend.
+- “MQTT status: Disconnected” – ensure a broker is running on the configured
+  host/port and no firewall is blocking it. On Windows, verify the Mosquitto
+  service or console instance is still active (see broker section above).
+- “No new rows after watermark” – delete `publish_offsets.json` if you need to
+  replay historic data.
 
 Evidence checklist
 ------------------

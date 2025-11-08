@@ -16,6 +16,15 @@ Run with::
 Optional overrides can be supplied after ``--`` when launching Streamlit, e.g.::
 
     streamlit run a2_frontend.py -- --mqtt-host test.mosquitto.org --mqtt-topic 'nem/+/+/#'
+
+Broker requirement:
+
+    Ensure Mosquitto (or any MQTT v3/v5 broker) is running on the same host as
+    the frontend/backend before starting Streamlit, for example::
+
+        & "C:\\Program Files\\mosquitto\\mosquitto.exe" -v
+
+    or start the Windows service with ``net start Mosquitto``.
 """
 
 from __future__ import annotations
