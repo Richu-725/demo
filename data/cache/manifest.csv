@@ -1,2 +1,2 @@
-resource_id,cache_path,retrieved_at,bytes,md5,status
-NEM:metrics,data/cache/nem_metrics.csv,2025-11-07T14:29:29.803324,23218,b09ec3ffba4f7d5af1425eafbe67f764,updated
+window,cache_path,bytes,retrieved_at
+202510050000-202510120000,data\cache\nem_metrics.csv,82411129,2025-11-08T02:23:36.035277
