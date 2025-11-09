@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>REPORT.MD</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="comp5339-assignment-2">COMP5339 Assignment 2</h1>
+<p><strong>Electricity Sector Data Streaming and Analysis</strong></p>
+<p><strong>Group Members:</strong></p>
+<ul>
+<li><strong>Shilong Wu (540406973)</strong></li>
+<li><strong>Yunan Zhang (540597499)</strong></li>
+</ul>
+<h2 id="1-system-description">1. System Description</h2>
+<p>This project implements a <strong>real-time data streaming and visualization system</strong> for the Australian National Electricity Market (NEM).
+It retrieves electricity generation and emission metrics from the <strong>OpenElectricity API</strong>, processes and caches them using Python, and streams new records through an <strong>MQTT broker</strong> to a <strong>Streamlit dashboard</strong> for live visualization.</p>
+<h3 id="11-system-architecture">1.1 System Architecture</h3>
+<p>The overall system consists of three tightly integrated components:</p>
+<ol>
+<li><strong>Backend (<code>a2_backend.py</code>)</strong> — Fetches and transforms OpenElectricity data, maintains CSV caches, and publishes new rows to MQTT.</li>
+<li><strong>MQTT Broker (Mosquitto)</strong> — Serves as the lightweight message transport layer between backend and frontend.</li>
+<li><strong>Frontend (<code>a2_frontend.py</code>)</strong> — A Streamlit-based dashboard that subscribes to MQTT messages, visualizes live facility-level data, and supports real-time filtering.</li>
+</ol>
+<p>The continuous pipeline executes as:
+<strong>API → CSV Cache → MQTT Publisher → Streamlit Dashboard Subscriber.</strong></p>
+<p align="center">
+  <img src="Report/System_Architecture.png" width="450"/>
+  <br>
+  <b>Figure 1.</b> System architecture showing the continuous data flow from OpenElectricity API to Streamlit dashboard.
+</p>
+<p>This architecture ensures that every new data point retrieved from the API is cleaned, cached, streamed, and visualized with minimal delay, achieving near-real-time monitoring.</p>
+<h2 id="2-data-acquisition-cleaning-and-transformation">2. Data Acquisition, Cleaning, and Transformation</h2>
+<h3 id="21-data-retrieval">2.1 Data Retrieval</h3>
+<p>The backend fetches both <strong>facility metadata</strong> and <strong>time-series metrics</strong> using the OpenElectricity API:</p>
+<ul>
+<li><code>/facilities/</code> — Provides metadata such as name, coordinates, fuel type, and region.</li>
+<li><code>/data/facilities/{network}</code> — Provides 5-minute interval metrics for <code>energy</code> (MWh) and <code>emissions</code> (t).</li>
+</ul>
+<p>Configuration is managed by the <code>Settings</code> dataclass, including network name, time range, metrics, and broker parameters.
+Example command:</p>
+<pre class="hljs"><code><div>python a2_backend.py --mode build \
+--start 2025-10-05T00:00:00 --end 2025-10-12T00:00:00 \
+--metrics energy,emissions
+</div></code></pre>
+<p>As shown in <strong>Figure 2</strong>, it successfully detects <strong>508 facilities</strong> and resumes the requested time window (2025-10-05 → 2025-10-12).
+The manifest file automatically skips <strong>335 facilities</strong> already cached, so only the remaining records are downloaded.
+Each uncached facility is then processed sequentially for both <code>energy</code> and <code>emissions </code>metrics, which are stored in <code>data/cache/nem_metrics.csv</code>.</p>
+<p align="center"> <img src="Report/1.png" width="900"/> <br> <b>Figure 2.</b> Backend running in <code>build</code> mode. The log shows 508 facilities loaded from cache, 335 already cached within the selected window, and new facilities being processed sequentially. </p>
+This output verifies that the incremental-build logic works as intended—avoiding redundant API calls and maintaining up-to-date cached data for subsequent streaming.
+<h3 id="22-data-cleaning-and-metadata-integration">2.2 Data Cleaning and Metadata Integration</h3>
+<p>The <code>discover_facilities()</code> function processes facility metadata and applies strict validation rules:</p>
+<ul>
+<li>Removes entries missing coordinates or network identifiers.</li>
+<li>Extracts the <strong>primary fuel type</strong> from the first valid <code>fueltech_id</code>.</li>
+<li>Standardizes columns to: <code>facility_id</code>, <code>name</code>, <code>fuel</code>, <code>state</code>, <code>lat</code>, <code>lon</code>.</li>
+<li>Writes cleaned results to <code>data/cache/facilities.csv</code>.</li>
+</ul>
+<p>If the file already exists, it is reused, enabling incremental builds across sessions.</p>
+<h3 id="23-data-transformation">2.3 Data Transformation</h3>
+<p>The transformation logic, defined in <code>_pivot_and_enrich()</code>, performs several steps:</p>
+<ol>
+<li><strong>Pivot to Wide Format</strong> — Combines long-form metric rows into columns <code>energy_mwh</code> and <code>emissions_t</code>.</li>
+<li><strong>Derive Power (MW)</strong> —
+[
+\text{power_mw} = \frac{\text{energy_mwh}}{0.0833}
+]
+since each time step equals 5 minutes (0.0833 hours).</li>
+<li><strong>Join Metadata</strong> — Merges metrics with facility attributes.</li>
+<li><strong>Add Timestamps</strong> — Adds both <code>ts_event</code> (event time) and <code>ts_ingest</code> (ingestion time).</li>
+</ol>
+<p>The final dataset is appended to <code>data/cache/nem_metrics.csv</code>.</p>
+<p align="center">
+<table>
+<thead>
+<tr>
+<th>facility_id</th>
+<th>ts_event</th>
+<th>ts_ingest</th>
+<th>power_mw</th>
+<th>energy_mwh</th>
+<th>emissions_t</th>
+<th>name</th>
+<th>fuel</th>
+<th>state</th>
+<th>lat</th>
+<th>lon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YSWF</td>
+<td>2025-10-11T21:20:00</td>
+<td>2025-11-08T02:23:34.788838</td>
+<td>22.35</td>
+<td>1.8625</td>
+<td>0</td>
+<td>Yaloak South</td>
+<td>wind</td>
+<td>VI</td>
+<td>-37.71647</td>
+<td>144.24195</td>
+</tr>
+<tr>
+<td>MTGELWF</td>
+<td>2025-10-05T00:15:00</td>
+<td>2025-11-08T02:19:06.110573</td>
+<td>29.514</td>
+<td>2.4595</td>
+<td>0</td>
+<td>Mt Gellibrand</td>
+<td>wind</td>
+<td>VI</td>
+<td>-38.25766</td>
+<td>143.79865</td>
+</tr>
+<tr>
+<td>LOYYB</td>
+<td>2025-10-07T20:30:00</td>
+<td>2025-11-08T02:17:52.478264</td>
+<td>577.13</td>
+<td>48.0938</td>
+<td>53.9757</td>
+<td>Loy Yang B</td>
+<td>coal_brown</td>
+<td>VI</td>
+<td>-38.25362</td>
+<td>146.58559</td>
+</tr>
+</tbody>
+</table>
+<br>
+<b>Table 1.</b> Cleaned and enriched data sample from the NEM dataset.
+</p>
+<h2 id="3-data-integration-and-continuous-publishing">3. Data Integration and Continuous Publishing</h2>
+<h3 id="31-cache-management-and-manifest-system">3.1 Cache Management and Manifest System</h3>
+<p>To avoid redundant API calls, <code>build_cache()</code> maintains a <strong>manifest file (<code>manifest.csv</code>)</strong> that logs:</p>
+<ul>
+<li>Date window of the current build</li>
+<li>Cache size and timestamp</li>
+<li>Processed <code>facility_id</code> entries</li>
+</ul>
+<p>When the script is re-executed, previously cached facilities are skipped using <code>_load_checkpoint()</code>, ensuring efficient incremental updates.</p>
+<h3 id="32-mqtt-publishing-logic">3.2 MQTT Publishing Logic</h3>
+<p>The backend uses <code>paho-mqtt</code> to stream data rows to the topic <code>nem/events</code>.
+Each cache row is converted to JSON and published with a <strong>minimum 0.1 s delay (<code>PUBLISH_DELAY</code>)</strong> to preserve temporal order.</p>
+<p>Example MQTT payload:</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"facility_id"</span>: <span class="hljs-string">"LOYYB"</span>,
+  <span class="hljs-attr">"facility_name"</span>: <span class="hljs-string">"Loy Yang B"</span>,
+  <span class="hljs-attr">"fuel"</span>: <span class="hljs-string">"coal_brown"</span>,
+  <span class="hljs-attr">"state"</span>: <span class="hljs-string">"VI"</span>,
+  <span class="hljs-attr">"lat"</span>: <span class="hljs-number">-38.25</span>,
+  <span class="hljs-attr">"lon"</span>: <span class="hljs-number">146.58</span>,
+  <span class="hljs-attr">"ts_event"</span>: <span class="hljs-string">"2025-10-07T20:30:00"</span>,
+  <span class="hljs-attr">"power_mw"</span>: <span class="hljs-number">577.13</span>,
+  <span class="hljs-attr">"energy_mwh"</span>: <span class="hljs-number">48.09</span>,
+  <span class="hljs-attr">"emissions_t"</span>: <span class="hljs-number">53.97</span>
+}
+</div></code></pre>
+<h3 id="33-continuous-loop-execution">3.3 Continuous Loop Execution</h3>
+<p>The function <code>loop_pipeline()</code> orchestrates all backend steps:</p>
+<pre class="hljs"><code><div>build_cache() → stream_cache() → sleep(60s)
+</div></code></pre>
+<p>This creates an automated real-time workflow that periodically fetches, transforms, and streams new data every 60 seconds.
+Extensive logging ensures reliability during long runs.</p>
+<h2 id="4-data-visualization-frontend">4. Data Visualization (Frontend)</h2>
+<h3 id="41-dashboard-overview">4.1 Dashboard Overview</h3>
+<p>The Streamlit frontend (<code>a2_frontend.py</code>) provides an <strong>interactive real-time dashboard</strong>.
+It loads the cached CSV on startup, subscribes to the MQTT topic <code>nem/events</code>, and continuously updates the map and summary panels.</p>
+<p align="center">
+  <img src="Report/Dashboard.png" width="600"/>
+  <br>
+  <b>Figure 3.</b> Streamlit dashboard showing live updates of NEM facilities.
+</p>
+<h3 id="42-mqtt-subscriber-implementation">4.2 MQTT Subscriber Implementation</h3>
+<p>The <code>MQTTSubscriber</code> class runs in a background thread to maintain live data flow:</p>
+<ul>
+<li>Connects to <code>localhost:1883</code></li>
+<li>Subscribes to <code>nem/events</code></li>
+<li>Parses and validates incoming JSON messages</li>
+<li>Merges new records into the active DataFrame via <code>apply_event()</code></li>
+</ul>
+<p>Invalid messages are logged but skipped, ensuring consistent performance.</p>
+<h3 id="43-visualization-and-interactivity">4.3 Visualization and Interactivity</h3>
+<ul>
+<li><strong>Color coding by fuel type:</strong>
+Coal = dark gray, Gas = salmon, Hydro = blue, Solar = gold, Wind = green.</li>
+<li><strong>Marker scaling:</strong> Radius ∝ √(power_mw), bounded within [800 m, 120 km].</li>
+<li><strong>Sidebar controls:</strong> Adjust broker settings, filter by fuel or region, reload cache, toggle auto-refresh (default = 5 s).</li>
+<li><strong>Summary panel:</strong> Displays total active power (MW), total CO₂ emissions (t/5min), and the timestamp of the latest event.</li>
+</ul>
+<p align="center">
+  <img src="Report/summary.png" width="300"/>
+  <img src="Report/detail.png" width="300"/>
+  <br>
+<p align="cennter">
+  <b>Figure 4.</b> Map visualization with color-coded facilities and dynamic summary metrics.
+</p>
+<h2 id="5-findings-challenges-and-future-improvements">5. Findings, Challenges, and Future Improvements</h2>
+<h3 id="51-key-findings">5.1 Key Findings</h3>
+<ul>
+<li><strong>Coal and gas plants</strong> (e.g., LOYYB) dominate total energy output and emissions.</li>
+<li><strong>Wind and solar facilities</strong> (e.g., YSWF, MTGELWF) produce clean energy but with higher variability.</li>
+<li>The system consistently achieved <strong>1–2 s end-to-end latency</strong>, validating the real-time streaming design.</li>
+</ul>
+<h3 id="52-challenges-and-solutions">5.2 Challenges and Solutions</h3>
+<table>
+<thead>
+<tr>
+<th>Challenge</th>
+<th>Description</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API Rate Limit</td>
+<td>OpenElectricity free-tier limited to 500 calls/day</td>
+<td>Introduced caching and manifest checkpointing</td>
+</tr>
+<tr>
+<td>Multi-unit Facilities</td>
+<td>Several plants have multiple sub-units</td>
+<td>Aggregated metrics within <code>_pivot_and_enrich()</code></td>
+</tr>
+<tr>
+<td>MQTT Stability</td>
+<td>Occasional broker disconnections</td>
+<td>Implemented auto-reconnect and buffered queue</td>
+</tr>
+<tr>
+<td>Map Scaling</td>
+<td>High MW values distorted marker sizes</td>
+<td>Applied square-root scaling with bounds</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-future-improvements">5.3 Future Improvements</h3>
+<ul>
+<li>Incorporate <strong>market price</strong> and <strong>demand</strong> data to extend analysis scope.</li>
+<li>Add <strong>historical charts</strong> and <strong>trend visualizations</strong> for long-term insights.</li>
+<li>Deploy on a <strong>cloud-based MQTT broker</strong> for multi-user access.</li>
+<li>Integrate <strong>InfluxDB and Grafana</strong> for scalable, persistent time-series analytics.</li>
+</ul>
+<h2 id="6-individual-contributions">6. Individual Contributions</h2>
+<ul>
+<li><strong>Shilong Wu (540406973):</strong> Developed the backend module (<code>a2_backend.py</code>), including data retrieval, caching, transformation, and MQTT streaming. Implemented manifest tracking and continuous loop logic.</li>
+<li><strong>Yunan Zhang (540597499):</strong> Developed the Streamlit frontend (<code>a2_frontend.py</code>), implemented MQTT subscription, Pydeck-based visualization, filtering system, and overall dashboard layout. Conducted integration testing.</li>
+</ul>
+
+</body>
+</html>
