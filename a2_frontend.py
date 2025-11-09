@@ -205,6 +205,7 @@ def prepare_map_source(df: pd.DataFrame) -> pd.DataFrame:
     data["fuel_norm"] = data["fuel"].str.lower().fillna("other")
     data["color"] = data["fuel_norm"].apply(lambda fuel: palette.get(fuel, [127, 140, 141]))
     data["power_display"] = data["power_mw"].fillna(0.0)
+    data["power_str"] = data["power_display"].map(lambda x: f"{x:,.2f}")
     power_scale = data["power_display"].abs().pow(0.5)  # sqrt scaling tames very large plants
     scaled = power_scale.clip(lower=0.2) * MARKER_SCALE_FACTOR
     data["radius"] = scaled.clip(lower=MARKER_MIN_RADIUS_M, upper=MARKER_MAX_RADIUS_M)
@@ -427,7 +428,7 @@ def render_dashboard() -> None:
                             )
                         ],
                         tooltip={
-                            "html": "<b>{name}</b><br/>Fuel: {fuel}<br/>Power: {power_display:.2f} MW<br/>CO2: {emissions_t}",
+                            "html": "<b>{name}</b><br/>Fuel: {fuel}<br/>Power: {power_str} MW<br/>CO2: {co2}",
                             "style": {"backgroundColor": "steelblue", "color": "white"},
                         },
                     )
